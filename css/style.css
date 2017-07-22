@@ -1,0 +1,220 @@
+body{
+	color: #323a45;
+}
+a, a:hover{
+	color: #323a45;
+}
+header{
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+}
+#main-content{
+	padding-top: 70px;
+}
+/*helpers*/
+.hide-item{
+	display: none;
+}
+
+/* style for crop image */
+.cropped-image {
+  position: relative;
+  width: auto;
+  overflow: hidden;
+}
+.cropped-image img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+.cropped-image img.portrait {
+  width: 100%;
+  height: auto;
+}
+/*Menu*/
+.navbar-brand{
+	font-size: 20px;
+	line-height: 22px;
+}
+.navbar-default .navbar-text{
+	font-size: 22px;
+    line-height: 40px;
+}
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-brand,
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-brand:hover,
+.navbar-default .navbar-text
+{
+	color: #323a45;
+	font-weight: bold;
+}
+.navbar{
+	margin-bottom: 0;
+	border-radius: 0;
+	border: 0;
+}
+
+.chai-brand-logo img{
+	margin-left: 20px;
+}
+.navbar-nav>li>a{
+	line-height: 40px;	
+}
+.navbar-default .navbar-toggle{
+	margin-top: 18px;
+	margin-bottom: 18px;
+}
+/*form navbar*/
+.navbar-form .form-group{
+	line-height: 40px;
+}
+/*Helpers*/
+.coco-color{
+	background-color: #FF3366;
+	border-color: #FF3366;
+}
+.coco-color a{
+	color: #fff;
+}
+a.coco-color, input.coco-color{
+	border-color: #D21141;
+}
+a.coco-color:hover, input.coco-color:hover{
+	background-color: #D21141;
+	border-color: #AB0A32;
+}
+.home-link, .home-link:hover{
+	color: #2F7BBD;
+}
+a.no-underline:hover{
+	text-decoration: none;
+}
+/*loading indicator*/
+.loading-indicator{
+	padding: 200px;
+}
+.hide-footer{
+	display: none;
+}
+.show-footer{
+	display: block;
+}
+/*Home*/
+.filter-header{
+	background-color: #e1e3e5;
+	padding: 10px 15px;
+	margin-top: 20px;
+	text-align: center;
+}
+.filter-content{
+	padding: 10px 10px 0;
+	border: 1px solid #e1e3e5;
+}
+.price-filter{
+	padding-bottom: 10px;
+}
+.house-item{
+	margin: 20px 0;
+}
+.house-item a:hover{
+	text-decoration: none;
+}
+.house-item h4{
+	margin-bottom: 5px;
+}
+.house-item .item-views{
+	margin-left: 30px;
+}
+.house-item .house-image-content{
+	height: 270px;
+}
+.house-content-header{
+	text-align: left;
+}
+/*pagination*/
+.pagination>.active>a,
+.pagination>.active>a:hover{
+	background-color: #FF3366;
+	border-color: #FF3366;
+}
+/*House details*/
+.house-images .house-image-content{
+	height: 450px;
+}
+.house-content{
+	margin: 20px
+}
+.house-section .form-group{
+	margin-bottom: 0;
+}
+.house-section .form-horizontal .control-label{
+	text-align: left;
+}
+.house-section .form-horizontal .control-label{
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.house-section .form-control-static{
+	padding-top: 0px;	
+	padding-bottom: 0px;
+	min-height: 30px;
+}
+.house-section{
+	margin-bottom: 30px;
+}
+.house-features {
+	margin: 30px 0;
+}
+.house-features i{
+	display: block;
+	font-size: 30px;
+	margin-bottom: 7px;
+}
+.house-features span{
+	font-size: 18px;
+	font-weight: bold;
+}
+.house-actions a{
+	width: 100%;
+}
+.house-metrics{
+	margin: 10px 10px 20px 10px;
+	font-size: 18px;
+}
+.house-metrics a:hover i{
+	color: #D21141;
+}
+.services-list{
+	margin: 10px 20px;	
+}
+.services-list .service-item{
+	font-size: 16px;
+	margin: 10px 0;
+}
+.map-container{
+	margin-top: 20px;
+}
+/*Admin*/
+.contact-form{
+	margin-top: 30px;
+}
+.form-admin > form{
+	margin-bottom: 50px;
+}
+.contact-form .form-control{
+	max-width: 500px;
+}
+.admin-subsection{
+	margin-top: 50px;
+	margin-bottom: 20px;
+}
+.admin-counter-input{
+	display: initial;
+    width: 50px;
+    text-align: center;
+}
