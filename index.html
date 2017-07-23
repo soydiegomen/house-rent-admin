@@ -35,76 +35,79 @@
     <header>
       <site-Menu></site-Menu>
     </header>
-    <loading-indicator></loading-indicator>
-    <div ng-if="!isRouteLoading" ng-view autoscroll="true">
-      <!-- Page content. Using angular for load -->
-    </div>
-    <!-- hide-footer and show-footer are css classes for hide and show the footer while the view is loading
-    and avoid UX issues-->
-    <footer ng-if="!isRouteLoading" class="chai-dark-color hide-footer" ng-class="'show-footer'">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <h1>Cuentanos sobre tu proyecto</h1>
+    <div id="main-content">
+      <loading-indicator></loading-indicator>
+      <div ng-if="!isRouteLoading" ng-view autoscroll="true" >
+        <!-- Page content. Using angular for load -->
+      </div>
+      <!-- hide-footer and show-footer are css classes for hide and show the footer while the view is loading
+      and avoid UX issues-->
+      <footer ng-if="!isRouteLoading" class="chai-dark-color hide-footer" ng-class="'show-footer'">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <h1>Cuentanos sobre tu proyecto</h1>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <p>¿tienes un evento, una empresa o un proyecto que deseas crear? Cuentanos de él nos encantará trabajar contigo.
-            </p>
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <p>¿tienes un evento, una empresa o un proyecto que deseas crear? Cuentanos de él nos encantará trabajar contigo.
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-center footer-contact">
-            <a href="/#contacto" class="btn btn-primary btn-lg coco-color ">Empecemos a trabajar juntos</a>
+          <div class="row">
+            <div class="col-md-12 text-center footer-contact">
+              <a href="/#contacto" class="btn btn-primary btn-lg coco-color ">Empecemos a trabajar juntos</a>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <ul class="footer-menu list-unstyled list-inline">
-              <li>
-                <a href="/">INICIO</a>|
-              </li>
-              <li>
-                <a href="/#servicios">SERVICIOS</a>|
-              </li>
-              <li>
-                <a href="/#trabajo">PORTAFOLIO</a>|
-              </li>
-              <li>
-                <a href="/#contacto">CONTACTANOS</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <div id="fb-bottom">
-              <ul class="social-footer list-unstyled list-inline">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <ul class="footer-menu list-unstyled list-inline">
                 <li>
-                  <a href="https://twitter.com/chailateagencia" class="tw-link">
-                    <i class="fa fa-twitter fa-lg"></i>
-                  </a>
+                  <a href="/">INICIO</a>|
                 </li>
                 <li>
-                  <a href="https://www.instagram.com/chailateagencia/" class="ins-link">
-                    <i class="fa fa-instagram fa-lg"></i>
-                  </a>
+                  <a href="/#servicios">SERVICIOS</a>|
                 </li>
                 <li>
-                  <a href="https://www.facebook.com/chailateagencia/" class="fb-link">
-                    <i class="fa fa-facebook fa-lg"></i>
-                  </a>
+                  <a href="/#trabajo">PORTAFOLIO</a>|
                 </li>
                 <li>
-                  <div class="fb-like" data-href="https://www.facebook.com/chailateagencia/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+                  <a href="/#contacto">CONTACTANOS</a>
                 </li>
               </ul>
             </div>
           </div>
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <div id="fb-bottom">
+                <ul class="social-footer list-unstyled list-inline">
+                  <li>
+                    <a href="https://twitter.com/chailateagencia" class="tw-link">
+                      <i class="fa fa-twitter fa-lg"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.instagram.com/chailateagencia/" class="ins-link">
+                      <i class="fa fa-instagram fa-lg"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.facebook.com/chailateagencia/" class="fb-link">
+                      <i class="fa fa-facebook fa-lg"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <div class="fb-like" data-href="https://www.facebook.com/chailateagencia/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+    <!-- end main-content -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!--<script src="js/vendors/jquery-11.min.js"></script>-->
     <!--<script src="js/vendors/bootstrap.min.js"></script>-->
