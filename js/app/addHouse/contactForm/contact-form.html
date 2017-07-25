@@ -2,26 +2,28 @@
 	<div class="row">
 	  <div class="col-md-12 form-admin">
 	    <h2>Información de contacto</h2>
+	    <h3 ng-bind="contactFormCtrl.contactData.name"></h3>
 	    <form class="contact-form">
 	      <div class="form-group">
 	        <label for="exampleInputEmail1">Nombre:</label>
-	        <input type="text" class="form-control" placeholder="Nombre del contacto">
+	        <input type="text" class="form-control" placeholder="Nombre del contacto" ng-model="contactFormCtrl.contactData.name">
 	      </div>
 	      <div class="form-group">
 	        <label for="exampleInputEmail1">Teléfono:</label>
-	        <input type="text" class="form-control" placeholder="Teléfono donde podran pedir informes">
+	        <input type="text" class="form-control" placeholder="Teléfono donde podran pedir informes" ng-model="contactFormCtrl.contactData.phone">
 	      </div>
 	      <div class="form-group">
 	        <label for="exampleInputEmail1">Email:</label>
-	        <input type="text" class="form-control" placeholder="Correo eléctronico donde podran enviar dudas">
+	        <input type="text" class="form-control" placeholder="Correo eléctronico donde podran enviar dudas" ng-model="contactFormCtrl.contactData.email">
 	      </div>
 	      <div class="form-group">
 	        <label for="exampleInputEmail1">Facebook:</label>
-	        <input type="text" class="form-control" placeholder="Link de FB en caso de querer que te contacten por este medio">
+	        <input type="text" class="form-control" placeholder="Link de FB en caso de querer que te contacten por este medio"
+	        ng-model="contactFormCtrl.contactData.facebook">
 	      </div>
 	      <div class="form-group">
 	        <label for="exampleInputEmail1">Sitio web:</label>
-	        <input type="text" class="form-control" placeholder="Link del sitio web">
+	        <input type="text" class="form-control" placeholder="Link del sitio web" ng-model="contactFormCtrl.contactData.website">
 	      </div>
 	      <div>
 	        <br/>
