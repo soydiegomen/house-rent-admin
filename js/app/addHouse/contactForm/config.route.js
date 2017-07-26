@@ -8,7 +8,7 @@
 	function getRoutes() {
 		return [
 			{
-				url: '/contactForm',
+				url: '/contact-form',
 				config: {
 					templateUrl: 'js/app/addHouse/contactForm/contact-form.html',
 			        controller: 'ContactFormCtrl',

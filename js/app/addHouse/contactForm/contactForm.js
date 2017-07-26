@@ -3,10 +3,10 @@
 
 	angular.module('chaiApp.contactForm').controller('ContactFormCtrl', ContactFormCtrl);
 
-	ContactFormCtrl.$inject = ['$window','localStorageService'];
+	ContactFormCtrl.$inject = ['$window', 'houseStorageService', '$location'];
 
 	/**@ngInject*/
-	function ContactFormCtrl($window, localStorageService){
+	function ContactFormCtrl($window, houseStorageService, $location){
 		var homeCtrl = this;
 
 		homeCtrl.contactData = { name: '', 
@@ -26,22 +26,20 @@
 
 		function activate(){
 			console.log('Activated ContactFormCtrl');	
-			console.log(localStorageService);
+			var savedContData = houseStorageService.getContactData();
+			if(savedContData){
+				homeCtrl.contactData = savedContData;
+			}
 		}
 
 		function clickNext($event){
 			$event.preventDefault();
-			console.log(homeCtrl.contactData);
 
+			//Validate data before change to the next step
 			if(true){
-				var contact = JSON.stringify(homeCtrl.contactData);
-				console.log(contact);
-				localStorageService.setItem('test',contact);
-				var final = localStorageService.getJSON('test');
-				console.log(final);
+				houseStorageService.setContactData( homeCtrl.contactData);
+				$location.path('/general-form');
 			}
-
-			counter++;
 		}
 	}
 })();

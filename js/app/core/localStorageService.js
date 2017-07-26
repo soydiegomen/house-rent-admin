@@ -9,8 +9,9 @@
 	function localStorageService($window){
 		var service = {
 			setItem : setItem,
+			setJSONItem : setJSONItem,
 			getItem : getItem,
-			getJSON : getJSON
+			getJSONItem : getJSONItem
 		};
 
 		return service;
@@ -19,11 +20,16 @@
 			$window.localStorage.setItem(key, value);
 		}
 
+		function setJSONItem(key, value){
+			var jsonStr = JSON.stringify(value);
+			$window.localStorage.setItem(key, jsonStr);
+		}
+
 		function getItem(key){
 			return JSON.parse($window.localStorage.getItem(key));
 		}
 
-		function getJSON(key){
+		function getJSONItem(key){
 			return JSON.parse($window.localStorage.getItem(key));
 		}
 	}

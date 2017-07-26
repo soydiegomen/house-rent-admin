@@ -8,7 +8,7 @@
 	function getRoutes() {
 		return [
 			{
-				url: '/detailsForm',
+				url: '/details-form',
 				config: {
 					templateUrl: 'js/app/addHouse/detailsForm/details-form.html',
 			        controller: 'DetailsFormCtrl',

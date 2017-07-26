@@ -8,7 +8,7 @@
 	function getRoutes() {
 		return [
 			{
-				url: '/generalForm',
+				url: '/general-form',
 				config: {
 					templateUrl: 'js/app/addHouse/generalForm/general-form.html',
 			        controller: 'GeneralFormCtrl',
