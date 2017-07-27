@@ -5,23 +5,23 @@
 	    <form class="contact-form">
 	      <div class="form-group">
 	        <label for="exampleInputEmail1">¿De qué tipo de propiedad se trata?</label>
-	        <select class="form-control">
-	          <option value="0">Selecciona el tipo de propiedad</option>
-	          <option value="0">Casa</option>
-	          <option value="0">Departamento</option>
-	          <option value="0">Oficina</option>
-	          <option value="0">Terreno</option>
-	          <option value="0">Salon</option>
-	          <option value="0">Otro</option>
+	        <select class="form-control" ng-model="generalFormCtrl.generalData.propertyType">
+	          <option value="">Selecciona el tipo de propiedad</option>
+	          <option value="Casa">Casa</option>
+	          <option value="Departamento">Departamento</option>
+	          <option value="Oficina">Oficina</option>
+	          <option value="Terreno">Terreno</option>
+	          <option value="Salon">Salon</option>
+	          <option value="Otro">Otro</option>
 	        </select>
 	      </div>
 	      <!-- end tipo de propiedad -->
 	      <div class="form-group">
 	        <label for="exampleInputEmail1">¿Que tipo de operación quieres hacer?</label>
-	        <select class="form-control">
-	          <option value="0">Selecciona el tipo de operación</option>
-	          <option value="0">Venta</option>
-	          <option value="0">Renta</option>
+	        <select class="form-control" ng-model="generalFormCtrl.generalData.operationType">
+	          <option value="">Selecciona el tipo de operación</option>
+	          <option value="Venta">Venta</option>
+	          <option value="Renta">Renta</option>
 	        </select>
 	      </div>
 	      <!-- end tipo de operación -->
@@ -34,7 +34,7 @@
 	          <a class="btn btn-primary">
 	            <i class="fa fa-minus" aria-hidden="true"></i>
 	          </a>
-	          <input class="form-control admin-counter-input" type="text" value="1">
+	          <input class="form-control admin-counter-input" type="text" value="1" ng-model="generalFormCtrl.generalData.noBedrooms">
 	          <a class="btn btn-primary">
 	            <i class="fa fa-plus" aria-hidden="true"></i>
 	          </a>
@@ -47,7 +47,7 @@
 	          <a class="btn btn-primary">
 	            <i class="fa fa-minus" aria-hidden="true"></i>
 	          </a>
-	          <input class="form-control admin-counter-input" type="text" value="0">
+	          <input class="form-control admin-counter-input" type="text" value="0" ng-model="generalFormCtrl.generalData.noBathrooms">
 	          <a class="btn btn-primary">
 	            <i class="fa fa-plus" aria-hidden="true"></i>
 	          </a>
@@ -60,7 +60,7 @@
 	          <a class="btn btn-primary">
 	            <i class="fa fa-minus" aria-hidden="true"></i>
 	          </a>
-	          <input class="form-control admin-counter-input" type="text" value="0">
+	          <input class="form-control admin-counter-input" type="text" value="0" ng-model="generalFormCtrl.generalData.noParking">
 	          <a class="btn btn-primary">
 	            <i class="fa fa-plus" aria-hidden="true"></i>
 	          </a>
@@ -69,6 +69,16 @@
 	      <!-- end estacionamiento -->
 	      <div class="admin-subsection">
 	        <h3>Servicios</h3>
+	      </div>
+	      <div class="form-group">
+	        <label for="exampleInputEmail1">¿Que servicios ofrece?</label>
+	        <div>
+	          <div class="checkbox" ng-repeat="service in generalFormCtrl.availableServ">
+	            <label>
+	              <input type="checkbox" ng-model="service.isSelected">{{service.label}}
+	            </label>
+	          </div>
+	        </div>
 	      </div>
 	      <div class="form-group">
 	        <label for="exampleInputEmail1">¿Que servicios ofrece?</label>
@@ -108,7 +118,7 @@
 	      <!-- end estacionamiento -->
 	      <div>
 	        <br/>
-	        <a class="btn btn-default">Regresar</a>
+	        <a class="btn btn-default" ng-click="generalFormCtrl.clickBack($event)">Regresar</a>
 	        <a class="btn btn-primary coco-color" ng-click="generalFormCtrl.clickNext($event)">Siguiente</a>
 	      </div>
 	    </form>
