@@ -31,11 +31,11 @@
 	      <div class="form-group">
 	        <label for="exampleInputEmail1">¿Cuantas habitaciones tiene?</label>
 	        <div>
-	          <a class="btn btn-primary">
+	          <a class="btn btn-primary" ng-click="generalFormCtrl.clickBedrooms($event,'subtract');">
 	            <i class="fa fa-minus" aria-hidden="true"></i>
 	          </a>
 	          <input class="form-control admin-counter-input" type="text" value="1" ng-model="generalFormCtrl.generalData.noBedrooms">
-	          <a class="btn btn-primary">
+	          <a class="btn btn-primary" ng-click="generalFormCtrl.clickBedrooms($event,'add');">
 	            <i class="fa fa-plus" aria-hidden="true"></i>
 	          </a>
 	        </div>
@@ -44,11 +44,11 @@
 	      <div class="form-group">
 	        <label for="exampleInputEmail1">¿Cuantos baños hay?</label>
 	        <div>
-	          <a class="btn btn-primary">
+	          <a class="btn btn-primary" ng-click="generalFormCtrl.clickBathrooms($event,'subtract');">
 	            <i class="fa fa-minus" aria-hidden="true"></i>
 	          </a>
 	          <input class="form-control admin-counter-input" type="text" value="0" ng-model="generalFormCtrl.generalData.noBathrooms">
-	          <a class="btn btn-primary">
+	          <a class="btn btn-primary" ng-click="generalFormCtrl.clickBathrooms($event,'add');">
 	            <i class="fa fa-plus" aria-hidden="true"></i>
 	          </a>
 	        </div>
@@ -57,11 +57,11 @@
 	      <div class="form-group">
 	        <label for="exampleInputEmail1">¿Cuantas lugares de estacionamiento tiene?</label>
 	        <div>
-	          <a class="btn btn-primary">
+	          <a class="btn btn-primary" ng-click="generalFormCtrl.clickParking($event,'subtract');">
 	            <i class="fa fa-minus" aria-hidden="true"></i>
 	          </a>
 	          <input class="form-control admin-counter-input" type="text" value="0" ng-model="generalFormCtrl.generalData.noParking">
-	          <a class="btn btn-primary">
+	          <a class="btn btn-primary" ng-click="generalFormCtrl.clickParking($event,'add');">
 	            <i class="fa fa-plus" aria-hidden="true"></i>
 	          </a>
 	        </div>
@@ -70,7 +70,7 @@
 	      <div class="admin-subsection">
 	        <h3>Servicios</h3>
 	      </div>
-	      <div class="form-group">
+	      <div id="services-section" class="form-group">
 	        <label for="exampleInputEmail1">¿Que servicios ofrece?</label>
 	        <div>
 	          <div class="checkbox" ng-repeat="service in generalFormCtrl.availableServ">
@@ -80,42 +80,7 @@
 	          </div>
 	        </div>
 	      </div>
-	      <div class="form-group">
-	        <label for="exampleInputEmail1">¿Que servicios ofrece?</label>
-	        <div>
-	          <div class="checkbox">
-	            <label>
-	              <input type="checkbox">Internet
-	            </label>
-	          </div>
-	          <div class="checkbox">
-	            <label>
-	              <input type="checkbox">Línea telefónica
-	            </label>
-	          </div>
-	          <div class="checkbox">
-	            <label>
-	              <input type="checkbox">Cocina
-	            </label>
-	          </div>
-	          <div class="checkbox">
-	            <label>
-	              <input type="checkbox">Admite mascotas
-	            </label>
-	          </div>
-	          <div class="checkbox">
-	            <label>
-	              <input type="checkbox">Área de juegos infantiles
-	            </label>
-	          </div>
-	          <div class="checkbox">
-	            <label>
-	              <input type="checkbox">Seguridad privada
-	            </label>
-	          </div>
-	        </div>
-	      </div>
-	      <!-- end estacionamiento -->
+	      <!-- end services-section -->
 	      <div>
 	        <br/>
 	        <a class="btn btn-default" ng-click="generalFormCtrl.clickBack($event)">Regresar</a>
