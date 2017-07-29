@@ -13,17 +13,36 @@
 		detailsCtrl.clickBack = clickBack;
 		detailsCtrl.clickNext = clickNext;
 
+		//model
+		detailsCtrl.detailsData = { 
+			title: '', 
+			sumary: '', 
+			price: '', 
+			priceType: '', 
+			address: '',
+			state: 'México',
+			town: '',
+			longitude: 0,
+			latitude: 0
+		};
+
 		//Initialize controller
 		activate();
 
 		function activate(){
 			console.log('Activated DetailsFormCtrl');	
+
+			var savedData = houseStorageService.getDetailsData('details-data');
+			if(savedData){
+				detailsCtrl.detailsData = savedData;
+			}
 		}
 
 		function clickNext($event){
 			$event.preventDefault();
 
 			//Validate data before change to the next step
+			houseStorageService.setDetailsData(detailsCtrl.detailsData);
 			$location.path('/photos-form');
 		}
 

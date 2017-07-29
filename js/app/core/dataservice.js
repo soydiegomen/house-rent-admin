@@ -10,7 +10,7 @@
 		var service = {
 			getWorkGallery : getWorkGallery,
 			getPortfolio : getPortfolio,
-			sendComments : sendComments,
+			saveHouse : saveHouse,
 			getWebDetails : getWebDetails
 		};
 
@@ -56,32 +56,39 @@
 			}
 		}
 
-		function sendComments(contact){
-			console.log({
-				    subject: 'Mail de contacto',
-				    nameFrom: 'Agencia chailate',
-				    mailTo: 'chailateagencia@gmail.com',
-				    nameTo: 'Soporte chailate',
-				    contactName: contact.name,
-				    contactMessage: contact.message,
-				    contactEmail: contact.email
-				});
-			return $http.post(
-			  appConfig.apiBaseUrl+'sendmail/',
-			  {
-				    subject: 'Mail de contacto',
-				    nameFrom: 'Agencia chailate',
-				    mailTo: 'chailateagencia@gmail.com',
-				    nameTo: 'Soporte chailate',
-				    contactName: contact.name,
-				    contactMessage: contact.message,
-				    contactEmail: contact.email
-				}
-			).then(function successCallback(response) {
-			    return response;
-			  }, function errorCallback(response) {
-			    return response;
-			  });
+		function saveHouse(){
+			
+			var house = {
+			  userId: '595c5e901e83dc1e06000001',
+			  title: 'Casa a 5 min del centro',
+			  price: '2800',
+			  priceType: 'Mensual',
+			  propertyType: 'Casa',
+			  operationType: 'Renta',
+			  services: ['Telefono', 'Cocina'],
+			  status: 'Publicado',
+			  address: {
+			  	address: 'Alcatraz, Col Javier Barrios',
+			  	state: 'Mexico',
+			  	town: 'Jilotepec',
+			  	longitude: '100',
+			  	latitude: '100'
+			  },
+			  contact: {
+			  	name: 'Diego Mendoza',
+			  	phone: '55 23 22 03 85',
+			  	mail: 'diego@mail.com',
+			  	facebook: 'www.facebook.com',
+			  	webSite: 'www.misitio.com'
+			  }
+			};
+
+			return $http.post('http://localhost:3000/api/houses', house)
+				.then(function successCallback(response) {
+			    	return response;
+			  	}, function errorCallback(response) {
+			    	return response;
+			  	});
 		}
 
 		/*Helpers*/

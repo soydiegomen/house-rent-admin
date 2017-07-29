@@ -11,7 +11,9 @@
 			getContactData : getContactData,
 			setContactData : setContactData,
 			getGeneralData : getGeneralData,
-			setGeneralData : setGeneralData
+			setGeneralData : setGeneralData,
+			setDetailsData : setDetailsData,
+			getDetailsData : getDetailsData
 		};
 
 		return service;
@@ -30,6 +32,14 @@
 
 		function getGeneralData(){
 			return localStorageService.getJSONItem('general-data');
+		}
+
+		function setDetailsData(contactJSON){
+			localStorageService.setJSONItem('details-data', contactJSON);
+		}
+
+		function getDetailsData(){
+			return localStorageService.getJSONItem('details-data');
 		}
 	}
 })();

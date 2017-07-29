@@ -5,12 +5,12 @@
 	    <form class="contact-form">
 	      <div class="form-group">
 	        <label for="exampleInputEmail1">Título</label>
-	        <input type="text" class="form-control" placeholder="Ingresa el título para tu anuncio">
+	        <input type="text" class="form-control" placeholder="Ingresa el título para tu anuncio" ng-model="detailsFormCtrl.detailsData.title">
 	      </div>
 	      <!-- end título -->
 	      <div class="form-group">
 	        <label for="exampleInputEmail1">Resumen</label>
-	        <textarea class="form-control" rows="3" placeholder="Describe tu alojamiento a grandes rasgos"></textarea>
+	        <textarea class="form-control" rows="3" placeholder="Describe tu alojamiento a grandes rasgos" ng-model="detailsFormCtrl.detailsData.sumary"></textarea>
 	      </div>
 	      <!-- end resumen -->
 	      <div class="admin-subsection">
@@ -18,17 +18,17 @@
 	      </div>
 	      <div class="form-group">
 	        <label for="exampleInputEmail1">Precio</label>
-	        <input type="text" class="form-control" placeholder="Ingrecia el precio">
+	        <input type="text" class="form-control" placeholder="Ingrecia el precio" ng-model="detailsFormCtrl.detailsData.price">
 	      </div>
 	      <!-- end precio -->
 	      <div class="form-group">
 	        <label for="exampleInputEmail1">Tipo de precio</label>
-	        <select class="form-control">
-	          <option value="0">Selecciona el tipo de precio</option>
-	          <option value="0">Mensual</option>
-	          <option value="0">Por día</option>
-	          <option value="0">Compra</option>
-	          <option value="0">Otro</option>
+	        <select class="form-control" ng-model="detailsFormCtrl.detailsData.priceType">
+	          <option value="">Selecciona el tipo de precio</option>
+	          <option value="Mensual">Mensual</option>
+	          <option value="Dia">Por día</option>
+	          <option value="Compra">Compra</option>
+	          <option value="Otro">Otro</option>
 	        </select>
 	      </div>
 	      <!-- end tipo precio -->
@@ -37,16 +37,17 @@
 	      </div>
 	      <div class="form-group">
 	        <label for="exampleInputEmail1">Dirección</label>
-	        <textarea class="form-control" rows="3" placeholder="Ingresa la dirección donde se encuetra tu espacio  "></textarea>
+	        <textarea class="form-control" rows="3" placeholder="Ingresa la dirección donde se encuetra tu espacio" ng-model="detailsFormCtrl.detailsData.address"></textarea>
 	      </div>
 	      <!-- end dirección -->
 	      <div class="form-group">
 	        <label for="exampleInputEmail1">Municipio</label>
-	        <select class="form-control">
-	          <option value="0">Selecciona el municipio</option>
-	          <option value="0">Jilotepec</option>
-	          <option value="0">San Francisco Soyaniquilpan</option>
-	          <option value="0">Otro</option>
+	        <select class="form-control" ng-model="detailsFormCtrl.detailsData.town">
+	          <option value="">Selecciona el municipio</option>
+	          <option value="Jilotepec">Jilotepec</option>
+	          <option value="San Francisco Soyaniquilpan">San Francisco Soyaniquilpan</option>
+	          <option value="Canalejas">Canalejas</option>
+	          <option value="Otro">Otro</option>
 	        </select>
 	      </div>
 	      <!-- end municipio -->
