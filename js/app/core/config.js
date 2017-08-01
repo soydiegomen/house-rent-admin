@@ -5,7 +5,11 @@
 
     core.constant('appConfig', 
     {
+        //Backend url
         apiBaseUrl: 'http://104.131.137.249/',
+        //Default user for save new houses
+        userId: '595c5e901e83dc1e06000001',
+        defaultHouseStatus: 'Publicado'
     });
 
     core.config(configure);

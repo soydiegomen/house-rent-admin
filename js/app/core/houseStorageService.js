@@ -13,7 +13,8 @@
 			getGeneralData : getGeneralData,
 			setGeneralData : setGeneralData,
 			setDetailsData : setDetailsData,
-			getDetailsData : getDetailsData
+			getDetailsData : getDetailsData,
+			getHouseData : getHouseData
 		};
 
 		return service;
@@ -40,6 +41,20 @@
 
 		function getDetailsData(){
 			return localStorageService.getJSONItem('details-data');
+		}
+
+		function getHouseData(){
+			var house = {
+				contact: null,
+				general: null,
+				details: null
+			};
+
+			house.contact = getContactData();
+			house.general = getGeneralData();
+			house.details = getDetailsData();
+
+			return house;
 		}
 	}
 })();

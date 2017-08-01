@@ -3,10 +3,10 @@
 
 	angular.module('chaiApp.photosForm').controller('PhotosFormCtrl', PhotosFormCtrl);
 
-	PhotosFormCtrl.$inject = ['$location','dataservice'];
+	PhotosFormCtrl.$inject = ['$location','dataservice', 'houseStorageService'];
 
 	/**@ngInject*/
-	function PhotosFormCtrl($location, dataservice){
+	function PhotosFormCtrl($location, dataservice, houseStorageService){
 		var homeCtrl = this;
 
 		//Events
@@ -27,7 +27,9 @@
 
 		function saveHouse($event){
 			$event.preventDefault();
-			dataservice.saveHouse();
+			//Get all the house data saved in the steps of the wizard
+			var houseData = houseStorageService.getHouseData();
+			dataservice.saveHouse(houseData);
 		}
 	}
 })();

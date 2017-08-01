@@ -9,7 +9,8 @@
 	function ContactFormCtrl($window, houseStorageService, $location){
 		var homeCtrl = this;
 
-		homeCtrl.contactData = { name: '', 
+		homeCtrl.contactData = { 
+			name: '', 
 			phone: '', 
 			email: '', 
 			facebook: '', 
