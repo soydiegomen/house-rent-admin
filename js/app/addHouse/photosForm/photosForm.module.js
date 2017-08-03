@@ -1,4 +1,4 @@
 ( function() {
 	'use strict';
-	angular.module('chaiApp.photosForm', []);
+	angular.module('chaiApp.photosForm', ['angularFileUpload']);
 })();

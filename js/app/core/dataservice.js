@@ -8,7 +8,8 @@
 
 	function dataservice($http, appConfig){
 		var service = {
-			saveHouse : saveHouse
+			saveHouse : saveHouse,
+			uploadFile : uploadFile
 		};
 
 		return service;
@@ -30,6 +31,9 @@
 			  operationType: general.operationType,
 			  services: servArray,
 			  status: appConfig.defaultHouseStatus,
+			  noBedrooms: general.noBedrooms,
+			  noBathrooms: general.noBathrooms,
+			  noParking: general.noParking,
 			  address: {
 			  	address: details.address,
 			  	state: details.state,
@@ -52,6 +56,27 @@
 			  	}, function errorCallback(response) {
 			    	return response;
 			  	});
+		}
+
+		function uploadFile($scope){
+			console.log($scope.file);
+
+			var formData = new FormData();
+			formData.append('userPhoto', $scope.file);
+
+			return $http({
+	            method: 'POST',
+	            url: 'http://localhost:3000/api/upload-files',
+	            headers: {
+	                'Content-Type': 'multipart/form-data'
+	            },
+	            data: formdata ,
+	            transformRequest: angular.identity
+	        }).
+	        then(function(result) {
+	            console.log(result);
+	            return result.data;
+	        });
 		}
 
 		/*Helpers*/
