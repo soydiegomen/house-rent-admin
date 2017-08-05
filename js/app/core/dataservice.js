@@ -9,7 +9,8 @@
 	function dataservice($http, appConfig){
 		var service = {
 			saveHouse : saveHouse,
-			uploadFile : uploadFile
+			uploadFile : uploadFile,
+			saveHouseFile : saveHouseFile
 		};
 
 		return service;
@@ -52,7 +53,17 @@
 
 			return $http.post('http://localhost:3000/api/houses', house)
 				.then(function successCallback(response) {
+			    	return response.data;
+			  	}, function errorCallback(response) {
 			    	return response;
+			  	});
+		}
+
+		function saveHouseFile(houseFile){
+
+			return $http.post('http://localhost:3000/api/house-files', houseFile)
+				.then(function successCallback(response) {
+			    	return response.data;
 			  	}, function errorCallback(response) {
 			    	return response;
 			  	});

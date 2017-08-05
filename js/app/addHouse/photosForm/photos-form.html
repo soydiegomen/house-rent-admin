@@ -7,8 +7,8 @@
 	        <label for="exampleInputFile">
 	          Agrega algunas fotos que le permitan a tus posibles huéspedes conocer la propiedad  
 	        </label>
-	        <!--<input type="file" id="exampleInputFile" file-model="photosFormCtrl.myFile">-->
-	        <input type="file" name="userPhoto" nv-file-select="" uploader="uploader" />
+	        <input type="file" name="userPhoto" id="userPhoto" nv-file-select="" uploader="uploader" />
+	        <br/>
 	        <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
                 <span class="glyphicon glyphicon-upload"></span> Cargar foto
             </button>
