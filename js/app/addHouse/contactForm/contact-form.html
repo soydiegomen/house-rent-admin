@@ -4,7 +4,7 @@
 	    <h2>Información de contacto</h2>
 	    <form class="contact-form">
 	      <div class="form-group">
-	        <label for="exampleInputEmail1">Nombre:</label>
+	        <label for="exampleInputEmail1">*Nombre:</label>
 	        <input type="text" class="form-control" placeholder="Nombre del contacto" ng-model="contactFormCtrl.contactData.name">
 	      </div>
 	      <div class="form-group">
@@ -26,7 +26,7 @@
 	      </div>
 	      <div>
 	        <br/>
-	        <a class="btn btn-default">Cancelar</a>
+	        <a class="btn btn-default" ng-click="contactFormCtrl.cancel($event)">Cancelar</a>
 	        <a class="btn btn-primary coco-color" ng-click="contactFormCtrl.clickNext($event)">Siguiente</a>
 	      </div>
 	    </form>

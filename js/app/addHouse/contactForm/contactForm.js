@@ -21,6 +21,7 @@
 		var counter = 0;
 		//events
 		homeCtrl.clickNext = clickNext;
+		homeCtrl.cancel = cancel;
 
 		//Initialize controller
 		activate();
@@ -33,6 +34,7 @@
 			}
 		}
 
+		//Events implementation
 		function clickNext($event){
 			$event.preventDefault();
 
@@ -41,6 +43,14 @@
 				houseStorageService.setContactData( homeCtrl.contactData);
 				$location.path('/general-form');
 			}
+		}
+
+		function cancel($event){
+			$event.preventDefault();
+
+			houseStorageService.clear();
+			//TODO: Redirect to the houses list page
+			homeCtrl.contactData = {};
 		}
 	}
 })();

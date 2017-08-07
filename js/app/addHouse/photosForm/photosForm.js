@@ -42,11 +42,20 @@
 
 				//If there are files must save it
 				if(uploadedFiles.length > 0){
-					saveHouseFiles(houseId, function(){
-						console.log('All the files are saved');
-					});
+					saveHouseFiles(houseId, doAfterSave);
+				}else{
+					doAfterSave();
 				}
 			});
+		}
+
+		/*
+		*Clear local storage and navigate 
+		*/
+		function doAfterSave(){
+			//houseStorageService.clear();
+			alert('La casa fue guardada exitosamente!!');
+			$location.path('/contact-form');
 		}
 
 		function saveHouseFiles(houseId, callback){
@@ -60,8 +69,8 @@
 
 				dataservice.saveHouseFile(houseFile).then(function(){
 					counter--;
-					console.log('callback',counter);
 
+					//Execute callback after save all files
 					if(counter === 0){
 						callback();
 					}
@@ -71,10 +80,8 @@
 
 		// CALLBACKS
         uploader.onCompleteItem = function(fileItem, response, status, headers) {
-            console.info('onCompleteItem', response);
             var newFile = response._id;
             uploadedFiles.push(newFile);
-            console.log(uploadedFiles);
             //Clear input file, for upload new files
             document.getElementById('userPhoto').value = null;
         };

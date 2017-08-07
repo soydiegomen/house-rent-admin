@@ -11,7 +11,8 @@
 			setItem : setItem,
 			setJSONItem : setJSONItem,
 			getItem : getItem,
-			getJSONItem : getJSONItem
+			getJSONItem : getJSONItem,
+			clear : clear
 		};
 
 		return service;
@@ -31,6 +32,10 @@
 
 		function getJSONItem(key){
 			return JSON.parse($window.localStorage.getItem(key));
+		}
+
+		function clear(){
+			$window.localStorage.clear();	
 		}
 	}
 })();

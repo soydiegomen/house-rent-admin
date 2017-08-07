@@ -4,7 +4,7 @@
 	    <h2>Información general de la propiedad</h2>
 	    <form class="contact-form">
 	      <div class="form-group">
-	        <label for="exampleInputEmail1">¿De qué tipo de propiedad se trata?</label>
+	        <label for="exampleInputEmail1">*¿De qué tipo de propiedad se trata?</label>
 	        <select class="form-control" ng-model="generalFormCtrl.generalData.propertyType">
 	          <option value="">Selecciona el tipo de propiedad</option>
 	          <option value="Casa">Casa</option>
@@ -17,7 +17,7 @@
 	      </div>
 	      <!-- end tipo de propiedad -->
 	      <div class="form-group">
-	        <label for="exampleInputEmail1">¿Que tipo de operación quieres hacer?</label>
+	        <label for="exampleInputEmail1">*¿Que tipo de operación quieres hacer?</label>
 	        <select class="form-control" ng-model="generalFormCtrl.generalData.operationType">
 	          <option value="">Selecciona el tipo de operación</option>
 	          <option value="Venta">Venta</option>
@@ -29,7 +29,7 @@
 	        <h3>Caracteristicas</h3>
 	      </div>
 	      <div class="form-group">
-	        <label for="exampleInputEmail1">¿Cuantas habitaciones tiene?</label>
+	        <label for="exampleInputEmail1">*¿Cuantas habitaciones tiene?</label>
 	        <div>
 	          <a class="btn btn-primary" ng-click="generalFormCtrl.clickBedrooms($event,'subtract');">
 	            <i class="fa fa-minus" aria-hidden="true"></i>
@@ -42,7 +42,7 @@
 	      </div>
 	      <!-- end habitaciones -->
 	      <div class="form-group">
-	        <label for="exampleInputEmail1">¿Cuantos baños hay?</label>
+	        <label for="exampleInputEmail1">*¿Cuantos baños hay?</label>
 	        <div>
 	          <a class="btn btn-primary" ng-click="generalFormCtrl.clickBathrooms($event,'subtract');">
 	            <i class="fa fa-minus" aria-hidden="true"></i>
@@ -55,7 +55,7 @@
 	      </div>
 	      <!-- end baños -->
 	      <div class="form-group">
-	        <label for="exampleInputEmail1">¿Cuantas lugares de estacionamiento tiene?</label>
+	        <label for="exampleInputEmail1">*¿Cuantas lugares de estacionamiento tiene?</label>
 	        <div>
 	          <a class="btn btn-primary" ng-click="generalFormCtrl.clickParking($event,'subtract');">
 	            <i class="fa fa-minus" aria-hidden="true"></i>

@@ -14,7 +14,8 @@
 			setGeneralData : setGeneralData,
 			setDetailsData : setDetailsData,
 			getDetailsData : getDetailsData,
-			getHouseData : getHouseData
+			getHouseData : getHouseData,
+			clear : clear
 		};
 
 		return service;
@@ -55,6 +56,10 @@
 			house.details = getDetailsData();
 
 			return house;
+		}
+
+		function clear(){
+			localStorageService.clear();
 		}
 	}
 })();
