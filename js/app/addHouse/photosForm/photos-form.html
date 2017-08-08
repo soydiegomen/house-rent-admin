@@ -20,6 +20,10 @@
 	        <a class="btn btn-default" ng-click="photosFormCtrl.clickBack($event)">Regresar</a>
 	        <a class="btn btn-primary coco-color" ng-click="photosFormCtrl.saveHouse($event)">Terminar</a>
 	      </div>
+	      <br/>
+	      <div class="alert alert-danger" role="alert" ng-show="photosFormCtrl.errorMessage.length > 0">
+	      	<p ng-bind="photosFormCtrl.errorMessage"></p>
+	      </div>
 	    </form>
 	  </div>
 	  <!-- end form-admin -->

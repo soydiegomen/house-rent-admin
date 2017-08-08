@@ -14,6 +14,7 @@
 		homeCtrl.clickBack = clickBack;
 		homeCtrl.saveHouse = saveHouse;
 		homeCtrl.myFile = null;
+		homeCtrl.errorMessage = '';
 
 		//Setup FileUploader
 		var uploader = $scope.uploader = new FileUploader({
@@ -38,6 +39,17 @@
 			//Get all the house data saved in the steps of the wizard
 			var houseData = houseStorageService.getHouseData();
 			dataservice.saveHouse(houseData).then(function(data){
+				console.log('data after save', data);
+
+				//If some error happend show the error and cancel the process 
+				if(data.errors){
+					homeCtrl.errorMessage = JSON.stringify(data);
+					return;
+				}else if(homeCtrl.errorMessage.length > 0){
+					//Clear error message
+					homeCtrl.errorMessage = '';
+				}
+
 				var houseId = data._id;
 
 				//If there are files must save it
@@ -53,7 +65,7 @@
 		*Clear local storage and navigate 
 		*/
 		function doAfterSave(){
-			//houseStorageService.clear();
+			houseStorageService.clear();
 			alert('La casa fue guardada exitosamente!!');
 			$location.path('/contact-form');
 		}

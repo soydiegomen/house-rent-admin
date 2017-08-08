@@ -55,7 +55,7 @@
 				.then(function successCallback(response) {
 			    	return response.data;
 			  	}, function errorCallback(response) {
-			    	return response;
+			    	return response.data;
 			  	});
 		}
 
