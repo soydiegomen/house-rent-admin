@@ -10,7 +10,8 @@
 		var service = {
 			saveHouse : saveHouse,
 			uploadFile : uploadFile,
-			saveHouseFile : saveHouseFile
+			saveHouseFile : saveHouseFile,
+			getHouseByStatus : getHouseByStatus
 		};
 
 		return service;
@@ -62,6 +63,16 @@
 		function saveHouseFile(houseFile){
 
 			return $http.post('http://localhost:3000/api/house-files', houseFile)
+				.then(function successCallback(response) {
+			    	return response.data;
+			  	}, function errorCallback(response) {
+			    	return response;
+			  	});
+		}
+
+		function getHouseByStatus(status){
+
+			return $http.get('http://localhost:3000/api/houses/byStatus/'+status)
 				.then(function successCallback(response) {
 			    	return response.data;
 			  	}, function errorCallback(response) {

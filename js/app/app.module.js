@@ -7,6 +7,7 @@
 		'chaiApp.contactForm',
 		'chaiApp.generalForm',
 		'chaiApp.detailsForm',
-		'chaiApp.photosForm'
+		'chaiApp.photosForm',
+		'chaiApp.listHouses'
 	]);
 })();

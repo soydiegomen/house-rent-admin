@@ -1,0 +1,33 @@
+<div class="container">
+	<div class="row">
+		<div id="list-wrapper" class="col-md-12">
+			<h1>ListHouses!! </h1>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Título</th>
+						<th>Fecha de creación</th>
+						<th>Fecha de última modificación</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="house in listHousesCtrl.houses">
+						<td >
+							<a href="#/contact-form/{{house._id}}" ng-bind="house._id">
+							</a>
+						</td>
+						<td ng-bind="house.title"></td>
+						<td ng-bind="house.creationDate"></td>
+						<td ng-bind="house.lastModification"></td>
+					</tr>
+				</tbody>
+			<div >
+			</div>
+			</table>
+		</div>
+		<!-- end list-wrapper -->
+	</div>
+	<!-- end row -->
+</div>
+<!-- end container -->
