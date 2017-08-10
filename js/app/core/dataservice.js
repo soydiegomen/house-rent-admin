@@ -11,7 +11,8 @@
 			saveHouse : saveHouse,
 			uploadFile : uploadFile,
 			saveHouseFile : saveHouseFile,
-			getHouseByStatus : getHouseByStatus
+			getHouseByStatus : getHouseByStatus,
+			getHouse : getHouse
 		};
 
 		return service;
@@ -71,8 +72,18 @@
 		}
 
 		function getHouseByStatus(status){
+			var serviceUrl = appConfig.apiBaseUrl + 'api/houses/byStatus/' + status;
+			return $http.get(serviceUrl)
+				.then(function successCallback(response) {
+			    	return response.data;
+			  	}, function errorCallback(response) {
+			    	return response;
+			  	});
+		}
 
-			return $http.get('http://localhost:3000/api/houses/byStatus/'+status)
+		function getHouse(id){
+			var serviceUrl = appConfig.apiBaseUrl + 'api/house/' + id;
+			return $http.get(serviceUrl)
 				.then(function successCallback(response) {
 			    	return response.data;
 			  	}, function errorCallback(response) {

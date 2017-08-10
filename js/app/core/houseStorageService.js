@@ -15,7 +15,8 @@
 			setDetailsData : setDetailsData,
 			getDetailsData : getDetailsData,
 			getHouseData : getHouseData,
-			clear : clear
+			clear : clear,
+			setAllTempData : setAllTempData
 		};
 
 		return service;
@@ -60,6 +61,38 @@
 
 		function clear(){
 			localStorageService.clear();
+		}
+
+		function setAllTempData(json){
+			setContactUsingJson(json);
+			setGeneralUsingJson(json);
+		}
+
+		/*Helpers*/
+		function setContactUsingJson(json){
+			var contactData = { 
+				name: json.contact.name, 
+				phone: json.contact.phone, 
+				email: json.contact.mail, 
+				facebook: json.contact.facebook, 
+				website: json.contact.website
+			};
+
+			setContactData(contactData);
+		}
+
+		function setGeneralUsingJson(json){
+			var generalData = { 
+				propertyType: json.propertyType, 
+				operationType: json.operationType, 
+				noBedrooms: json.noBedrooms, 
+				noBathrooms: json.noBathrooms, 
+				noParking: json.noParking,
+				//TODO: Define services
+				services: []
+			};
+
+			setGeneralData(json);
 		}
 	}
 })();

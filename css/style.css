@@ -16,7 +16,9 @@ header{
 .hide-item{
 	display: none;
 }
-
+.house-link{
+	color: blue;
+}
 /* style for crop image */
 .cropped-image {
   position: relative;
