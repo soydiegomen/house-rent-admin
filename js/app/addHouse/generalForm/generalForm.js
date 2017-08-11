@@ -44,7 +44,6 @@
 			var savedGeneralData = houseStorageService.getGeneralData();
 			//Si  hay información guardada en el localstorage la mostramos
 			if(savedGeneralData){
-				console.log(savedGeneralData);
 				generalCtrl.generalData = savedGeneralData;	
 				selectServices(savedGeneralData.services);
 			}

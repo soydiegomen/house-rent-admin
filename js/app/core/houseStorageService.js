@@ -66,6 +66,7 @@
 		function setAllTempData(json){
 			setContactUsingJson(json);
 			setGeneralUsingJson(json);
+			setDetailsUsingJson(json);
 		}
 
 		/*Helpers*/
@@ -88,11 +89,32 @@
 				noBedrooms: json.noBedrooms, 
 				noBathrooms: json.noBathrooms, 
 				noParking: json.noParking,
-				//TODO: Define services
 				services: []
 			};
 
-			setGeneralData(json);
+			angular.forEach(json.services, function(value, Key){
+				var jsonService = { service: value, label: null, isSelected: false };
+				//Add service with object format required for GeneralForm.js
+				generalData.services.push(jsonService);
+			});
+
+			setGeneralData(generalData);
+		}
+
+		function setDetailsUsingJson(json){
+			var detailsData = { 
+				title: json.title, 
+				sumary: '', 
+				price: json.price, 
+				priceType: json.priceType, 
+				address: json.address.address,
+				state: json.address.state,
+				town: json.address.town,
+				longitude: json.address.longitude,
+				latitude: json.address.latitude
+			};
+
+			setDetailsData(detailsData);
 		}
 	}
 })();
