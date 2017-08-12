@@ -12,48 +12,30 @@
 			uploadFile : uploadFile,
 			saveHouseFile : saveHouseFile,
 			getHouseByStatus : getHouseByStatus,
-			getHouse : getHouse
+			getHouse : getHouse,
+			updateHouse : updateHouse
 		};
 
 		return service;
 
 		function saveHouse(houseData){
 			
-			var contact = houseData.contact;
-			var general = houseData.general;
-			var details = houseData.details;
-
-			var servArray = getServicesArray(general.services);
-
-			var house = {
-			  userId: appConfig.userId,
-			  title: details.title,
-			  price: details.price,
-			  priceType: details.priceType,
-			  propertyType: general.propertyType,
-			  operationType: general.operationType,
-			  services: servArray,
-			  status: appConfig.defaultHouseStatus,
-			  noBedrooms: general.noBedrooms,
-			  noBathrooms: general.noBathrooms,
-			  noParking: general.noParking,
-			  address: {
-			  	address: details.address,
-			  	state: details.state,
-			  	town: details.town,
-			  	longitude: details.longitude,
-			  	latitude: details.latitude
-			  },
-			  contact: {
-			  	name: contact.name,
-			  	phone: contact.phone,
-			  	mail: contact.email,
-			  	facebook: contact.facebook,
-			  	webSite: contact.website
-			  }
-			};
+			var house = buildHouseJson(houseData);
 
 			return $http.post('http://localhost:3000/api/houses', house)
+				.then(function successCallback(response) {
+			    	return response.data;
+			  	}, function errorCallback(response) {
+			    	return response.data;
+			  	});
+		}
+
+		function updateHouse(houseData){
+			var house = buildHouseJson(houseData);
+			var id = houseData.general._id;
+			var serviceUrl = appConfig.apiBaseUrl + 'api/house/' + id;
+
+			return $http.put(serviceUrl, house)
 				.then(function successCallback(response) {
 			    	return response.data;
 			  	}, function errorCallback(response) {
@@ -123,6 +105,47 @@
 			});
 
 			return servArray;
+		}
+
+		function buildHouseJson(houseData){
+			var contact = houseData.contact;
+			var general = houseData.general;
+			var details = houseData.details;
+
+			var servArray = getServicesArray(general.services);
+
+			var house = {
+				userId: appConfig.userId,
+				title: details.title,
+				summary: details.summary,
+				price: details.price,
+				priceType: details.priceType,
+				propertyType: general.propertyType,
+				operationType: general.operationType,
+				services: servArray,
+				status: appConfig.defaultHouseStatus,
+				noBedrooms: general.noBedrooms,
+				noBathrooms: general.noBathrooms,
+				noParking: general.noParking,
+				address: {
+					address: details.address,
+					state: details.state,
+					town: details.town,
+					longitude: details.longitude,
+					latitude: details.latitude
+				},
+				contact: {
+					name: contact.name,
+					phone: contact.phone,
+					mail: contact.email,
+					facebook: contact.facebook,
+					website: contact.website
+				}
+			};
+
+			console.log('house', house);
+
+			return house;
 		}
 	}
 })();

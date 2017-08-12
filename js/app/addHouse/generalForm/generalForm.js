@@ -18,6 +18,7 @@
 
 		//model
 		generalCtrl.generalData = { 
+			_id: null,
 			propertyType: '', 
 			operationType: '', 
 			noBedrooms: 1, 

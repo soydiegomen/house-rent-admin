@@ -84,6 +84,7 @@
 
 		function setGeneralUsingJson(json){
 			var generalData = { 
+				_id: json._id,
 				propertyType: json.propertyType, 
 				operationType: json.operationType, 
 				noBedrooms: json.noBedrooms, 
@@ -104,7 +105,7 @@
 		function setDetailsUsingJson(json){
 			var detailsData = { 
 				title: json.title, 
-				sumary: '', 
+				summary: json.summary, 
 				price: json.price, 
 				priceType: json.priceType, 
 				address: json.address.address,
@@ -113,7 +114,7 @@
 				longitude: json.address.longitude,
 				latitude: json.address.latitude
 			};
-
+			console.log('detailsData', detailsData);
 			setDetailsData(detailsData);
 		}
 	}

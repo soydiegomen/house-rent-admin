@@ -29,6 +29,7 @@
 			console.log('Activated PhotosFormCtrl');	
 		}
 
+		//Events
 		function clickBack($event){
 			$event.preventDefault();
 			$location.path('/details-form');
@@ -36,8 +37,26 @@
 
 		function saveHouse($event){
 			$event.preventDefault();
-			//Get all the house data saved in the steps of the wizard
 			var houseData = houseStorageService.getHouseData();
+
+			if(houseData.general._id){
+				//Update mode
+				console.log('update mode');
+				updateHouse(houseData);
+			}else{
+				//Insert mode
+				console.log('insert mode');
+				createNewHouse(houseData);
+			}
+		}
+
+		/*
+		*Helpers
+		*/
+
+		function createNewHouse(houseData){
+			//Get all the house data saved in the steps of the wizard
+			
 			dataservice.saveHouse(houseData).then(function(data){
 				console.log('data after save', data);
 
@@ -58,6 +77,31 @@
 				}else{
 					doAfterSave();
 				}
+			});
+		}
+
+		function updateHouse(houseData){
+			
+			dataservice.updateHouse(houseData).then(function(data){
+				console.log('data after save', data);
+
+				//If some error happend show the error and cancel the process 
+				if(data.errors){
+					homeCtrl.errorMessage = JSON.stringify(data);
+					return;
+				}else if(homeCtrl.errorMessage.length > 0){
+					//Clear error message
+					homeCtrl.errorMessage = '';
+				}
+
+				/*var houseId = data._id;
+
+				//If there are files must save it
+				if(uploadedFiles.length > 0){
+					saveHouseFiles(houseId, doAfterSave);
+				}else{
+					doAfterSave();
+				}*/
 			});
 		}
 

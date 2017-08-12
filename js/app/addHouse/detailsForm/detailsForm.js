@@ -16,7 +16,7 @@
 		//model
 		detailsCtrl.detailsData = { 
 			title: '', 
-			sumary: '', 
+			summary: '', 
 			price: '', 
 			priceType: '', 
 			address: '',
@@ -34,6 +34,7 @@
 
 			var savedData = houseStorageService.getDetailsData('details-data');
 			if(savedData){
+				console.log('summary', savedData);
 				detailsCtrl.detailsData = savedData;
 			}
 		}
