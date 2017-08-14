@@ -62,9 +62,10 @@
 		function cancel($event){
 			$event.preventDefault();
 
+			//Clear local storage data
 			houseStorageService.clear();
 			//TODO: Redirect to the houses list page
-			homeCtrl.contactData = {};
+			$location.path('/list-houses');
 		}
 	}
 })();

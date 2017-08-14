@@ -3,10 +3,10 @@
 
 	angular.module('chaiApp.photosForm').controller('PhotosFormCtrl', PhotosFormCtrl);
 
-	PhotosFormCtrl.$inject = ['$location','dataservice', 'houseStorageService', '$scope', 'FileUploader'];
+	PhotosFormCtrl.$inject = ['$location','dataservice', 'houseStorageService', '$scope', 'FileUploader', 'appConfig'];
 
 	/**@ngInject*/
-	function PhotosFormCtrl($location, dataservice, houseStorageService, $scope, FileUploader){
+	function PhotosFormCtrl($location, dataservice, houseStorageService, $scope, FileUploader, appConfig){
 		var homeCtrl = this;
 		var uploadedFiles = [];
 
@@ -17,8 +17,9 @@
 		homeCtrl.errorMessage = '';
 
 		//Setup FileUploader
+		var serviceUrl = appConfig.apiBaseUrl + 'api/upload-files';
 		var uploader = $scope.uploader = new FileUploader({
-            url: 'http://localhost:3000/api/upload-files',
+            url: serviceUrl,
             alias: 'userPhoto'
         });
 
@@ -41,11 +42,9 @@
 
 			if(houseData.general._id){
 				//Update mode
-				console.log('update mode');
 				updateHouse(houseData);
 			}else{
 				//Insert mode
-				console.log('insert mode');
 				createNewHouse(houseData);
 			}
 		}
@@ -53,12 +52,10 @@
 		/*
 		*Helpers
 		*/
-
 		function createNewHouse(houseData){
 			//Get all the house data saved in the steps of the wizard
 			
 			dataservice.saveHouse(houseData).then(function(data){
-				console.log('data after save', data);
 
 				//If some error happend show the error and cancel the process 
 				if(data.errors){
@@ -83,7 +80,6 @@
 		function updateHouse(houseData){
 			
 			dataservice.updateHouse(houseData).then(function(data){
-				console.log('data after save', data);
 
 				//If some error happend show the error and cancel the process 
 				if(data.errors){
@@ -111,6 +107,7 @@
 		*Clear local storage and navigate 
 		*/
 		function doAfterSave(){
+			//Clear local storage data
 			houseStorageService.clear();
 			alert('La casa fue guardada exitosamente!!');
 			$location.path('/list-houses');
