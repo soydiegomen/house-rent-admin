@@ -102,6 +102,8 @@
 				}else{
 					doAfterSave();
 				}*/
+				//TODO: when the update files works delete the code doAfterSave
+				doAfterSave();
 			});
 		}
 
@@ -111,7 +113,7 @@
 		function doAfterSave(){
 			houseStorageService.clear();
 			alert('La casa fue guardada exitosamente!!');
-			$location.path('/contact-form');
+			$location.path('/list-houses');
 		}
 
 		function saveHouseFiles(houseId, callback){

@@ -54,7 +54,8 @@
 	      <div class="form-group">
 	        <label for="exampleInputEmail1">Selecciona la ubicación en el mapa</label>
 	      </div>
-	      <div class="admin-map-container">
+	      <a href class="house-link" ng-click="detailsFormCtrl.showMap = !detailsFormCtrl.showMap;">Seleccionar geolocalizaicón</a>
+	      <div class="admin-map-container" ng-show="detailsFormCtrl.showMap">
 	        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d15000.530307909527!2d-99.5284136!3d19.960926!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2smx!4v1497926774793" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 	      </div>
 	      <!-- end mapa -->

@@ -22,7 +22,9 @@
 			
 			var house = buildHouseJson(houseData);
 
-			return $http.post('http://localhost:3000/api/houses', house)
+			var serviceUrl = appConfig.apiBaseUrl + 'api/houses';
+
+			return $http.post(serviceUrl, house)
 				.then(function successCallback(response) {
 			    	return response.data;
 			  	}, function errorCallback(response) {
@@ -44,8 +46,9 @@
 		}
 
 		function saveHouseFile(houseFile){
+			var serviceUrl = appConfig.apiBaseUrl + 'api/house-files';
 
-			return $http.post('http://localhost:3000/api/house-files', houseFile)
+			return $http.post(serviceUrl, houseFile)
 				.then(function successCallback(response) {
 			    	return response.data;
 			  	}, function errorCallback(response) {
@@ -55,6 +58,7 @@
 
 		function getHouseByStatus(status){
 			var serviceUrl = appConfig.apiBaseUrl + 'api/houses/byStatus/' + status;
+
 			return $http.get(serviceUrl)
 				.then(function successCallback(response) {
 			    	return response.data;
@@ -65,6 +69,7 @@
 
 		function getHouse(id){
 			var serviceUrl = appConfig.apiBaseUrl + 'api/house/' + id;
+
 			return $http.get(serviceUrl)
 				.then(function successCallback(response) {
 			    	return response.data;
@@ -79,9 +84,11 @@
 			var formData = new FormData();
 			formData.append('userPhoto', $scope.file);
 
+			var serviceUrl = appConfig.apiBaseUrl + 'api/upload-files';
+
 			return $http({
 	            method: 'POST',
-	            url: 'http://localhost:3000/api/upload-files',
+	            url: serviceUrl,
 	            headers: {
 	                'Content-Type': 'multipart/form-data'
 	            },

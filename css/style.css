@@ -16,8 +16,11 @@ header{
 .hide-item{
 	display: none;
 }
-.house-link{
-	color: blue;
+.house-link, .house-link:active, .house-link:visited{
+	color: #FF3366;
+}
+.house-link:hover{
+	color: #D21141;
 }
 /* style for crop image */
 .cropped-image {
@@ -219,4 +222,8 @@ a.no-underline:hover{
 	display: initial;
     width: 50px;
     text-align: center;
+}
+/*Gooble map*/
+.admin-map-container{
+	margin-top: 20px;
 }

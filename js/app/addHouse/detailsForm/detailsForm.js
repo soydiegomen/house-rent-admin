@@ -9,6 +9,9 @@
 	function DetailsFormCtrl(houseStorageService, $location){
 		var detailsCtrl = this;
 
+		//Properties
+		detailsCtrl.showMap = false;		
+
 		//Events
 		detailsCtrl.clickBack = clickBack;
 		detailsCtrl.clickNext = clickNext;
