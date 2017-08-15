@@ -8,7 +8,7 @@
 	function getRoutes() {
 		return [
 			{
-				url: '/photos-form',
+				url: '/photos-form/:id?',
 				config: {
 					templateUrl: 'js/app/addHouse/photosForm/photos-form.html',
 			        controller: 'PhotosFormCtrl',

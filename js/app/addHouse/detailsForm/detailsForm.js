@@ -3,10 +3,10 @@
 
 	angular.module('chaiApp.detailsForm').controller('DetailsFormCtrl', DetailsFormCtrl);
 
-	DetailsFormCtrl.$inject = ['houseStorageService', '$location'];
+	DetailsFormCtrl.$inject = ['houseStorageService', '$location', 'utilityService'];
 	
 	/**@ngInject*/
-	function DetailsFormCtrl(houseStorageService, $location){
+	function DetailsFormCtrl(houseStorageService, $location, utilityService){
 		var detailsCtrl = this;
 
 		//Properties
@@ -37,7 +37,6 @@
 
 			var savedData = houseStorageService.getDetailsData('details-data');
 			if(savedData){
-				console.log('summary', savedData);
 				detailsCtrl.detailsData = savedData;
 			}
 		}
@@ -47,7 +46,7 @@
 
 			//Validate data before change to the next step
 			houseStorageService.setDetailsData(detailsCtrl.detailsData);
-			$location.path('/photos-form');
+			utilityService.navigateToNextStep('/photos-form/');
 		}
 
 		function clickBack($event){

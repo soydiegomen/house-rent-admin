@@ -3,10 +3,12 @@
 
 	angular.module('chaiApp.generalForm').controller('GeneralFormCtrl', GeneralFormCtrl);
 
-	GeneralFormCtrl.$inject = ['localStorageService', '$location', 'houseStorageService'];
+	GeneralFormCtrl.$inject = ['localStorageService', '$location', 'houseStorageService',
+		'utilityService'];
 
 	/**@ngInject*/
-	function GeneralFormCtrl(localStorageService, $location, houseStorageService){
+	function GeneralFormCtrl(localStorageService, $location, houseStorageService,
+		utilityService){
 		var generalCtrl = this;
 
 		//Events
@@ -57,8 +59,10 @@
 			var selectedServices = getSelectedServices();
 			generalCtrl.generalData.services = selectedServices;
 
+			//Save data in local storage
 			houseStorageService.setGeneralData(generalCtrl.generalData);
-			$location.path('/details-form');
+
+			utilityService.navigateToNextStep( '/details-form/' );
 		}
 
 		function clickBack($event){

@@ -3,10 +3,12 @@
 
 	angular.module('chaiApp.contactForm').controller('ContactFormCtrl', ContactFormCtrl);
 
-	ContactFormCtrl.$inject = ['$window', 'houseStorageService','$location','$routeParams', 'dataservice'];
+	ContactFormCtrl.$inject = ['$window', 'houseStorageService','$location','$routeParams', 
+		'dataservice', 'utilityService'];
 
 	/**@ngInject*/
-	function ContactFormCtrl($window, houseStorageService, $location, $routeParams, dataservice){
+	function ContactFormCtrl($window, houseStorageService, $location, $routeParams, 
+		dataservice, utilityService){
 		var homeCtrl = this;
 
 		homeCtrl.contactData = { 
@@ -28,8 +30,8 @@
 
 		function activate(){
 			console.log('Activated ContactFormCtrl');	
-			console.log('id',$routeParams.id);
 			if($routeParams.id){
+				//Edit mode
 				dataservice.getHouse($routeParams.id).then( function (data) {
 					houseStorageService.setAllTempData(data);
 
@@ -39,6 +41,7 @@
 					}
 				});
 			}else{
+				//Inser mode
 				var savedContData = houseStorageService.getContactData();
 				if(savedContData){
 					homeCtrl.contactData = savedContData;
@@ -53,10 +56,8 @@
 			$event.preventDefault();
 
 			//Validate data before change to the next step
-			if(true){
-				houseStorageService.setContactData( homeCtrl.contactData);
-				$location.path('/general-form');
-			}
+			houseStorageService.setContactData( homeCtrl.contactData );
+			utilityService.navigateToNextStep('/general-form/');
 		}
 
 		function cancel($event){
