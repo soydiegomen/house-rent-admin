@@ -53,8 +53,7 @@
 		}
 
 		//Events
-		function clickNext($event){
-			$event.preventDefault();
+		function clickNext(){
 			//Validate data before change to the next step	
 			var selectedServices = getSelectedServices();
 			generalCtrl.generalData.services = selectedServices;
@@ -62,12 +61,11 @@
 			//Save data in local storage
 			houseStorageService.setGeneralData(generalCtrl.generalData);
 
-			utilityService.navigateToNextStep( '/details-form/' );
+			utilityService.navigateToNextStep('/details-form/');
 		}
 
-		function clickBack($event){
-			$event.preventDefault();
-			$location.path('/contact-form');
+		function clickBack(){
+			utilityService.navigateToNextStep('/contact-form/');
 		}
 
 		function clickBedrooms($event, action){

@@ -41,17 +41,15 @@
 			}
 		}
 
-		function clickNext($event){
-			$event.preventDefault();
+		function clickNext(){
 
 			//Validate data before change to the next step
 			houseStorageService.setDetailsData(detailsCtrl.detailsData);
 			utilityService.navigateToNextStep('/photos-form/');
 		}
 
-		function clickBack($event){
-			$event.preventDefault();
-			$location.path('/general-form');
+		function clickBack(){
+			utilityService.navigateToNextStep('/general-form/');
 		}
 	}
 })();

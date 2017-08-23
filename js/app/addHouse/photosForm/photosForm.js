@@ -3,10 +3,12 @@
 
 	angular.module('chaiApp.photosForm').controller('PhotosFormCtrl', PhotosFormCtrl);
 
-	PhotosFormCtrl.$inject = ['$location','dataservice', 'houseStorageService', '$scope', 'FileUploader', 'appConfig'];
+	PhotosFormCtrl.$inject = ['$location','dataservice', 'houseStorageService', '$scope', 'FileUploader', 
+		'appConfig', 'utilityService'];
 
 	/**@ngInject*/
-	function PhotosFormCtrl($location, dataservice, houseStorageService, $scope, FileUploader, appConfig){
+	function PhotosFormCtrl($location, dataservice, houseStorageService, $scope, FileUploader, 
+		appConfig, utilityService){
 		var homeCtrl = this;
 		var uploadedFiles = [];
 
@@ -31,13 +33,11 @@
 		}
 
 		//Events
-		function clickBack($event){
-			$event.preventDefault();
-			$location.path('/details-form');
+		function clickBack(){
+			utilityService.navigateToNextStep('/details-form/');
 		}
 
-		function saveHouse($event){
-			$event.preventDefault();
+		function saveHouse(){
 			var houseData = houseStorageService.getHouseData();
 
 			if(houseData.general._id){
