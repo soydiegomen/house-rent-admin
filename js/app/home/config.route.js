@@ -8,7 +8,7 @@
 	function getRoutes() {
 		return [
 			{
-				url: '/',
+				url: '/home',
 				config: {
 					templateUrl: 'js/app/home/home.html',
 			        controller: 'HomeCtrl',

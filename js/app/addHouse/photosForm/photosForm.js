@@ -110,7 +110,7 @@
 			//Clear local storage data
 			houseStorageService.clear();
 			alert('La casa fue guardada exitosamente!!');
-			$location.path('/list-houses');
+			$location.path('/');
 		}
 
 		function saveHouseFiles(houseId, callback){

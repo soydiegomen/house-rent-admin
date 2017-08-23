@@ -8,7 +8,7 @@
 	function getRoutes() {
 		return [
 			{
-				url: '/list-houses',
+				url: '/',
 				config: {
 					templateUrl: 'js/app/listHouses/list-houses.html',
 			        controller: 'ListHousesCtrl',
