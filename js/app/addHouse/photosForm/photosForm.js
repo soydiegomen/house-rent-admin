@@ -90,16 +90,14 @@
 					homeCtrl.errorMessage = '';
 				}
 
-				/*var houseId = data._id;
+				var houseId = data._id;
 
 				//If there are files must save it
 				if(uploadedFiles.length > 0){
 					saveHouseFiles(houseId, doAfterSave);
 				}else{
 					doAfterSave();
-				}*/
-				//TODO: when the update files works delete the code doAfterSave
-				doAfterSave();
+				}
 			});
 		}
 
@@ -139,6 +137,7 @@
             uploadedFiles.push(newFile);
             //Clear input file, for upload new files
             document.getElementById('userPhoto').value = null;
+            alert('La foto se ha guardado en el servidor');
         };
 
 	}
