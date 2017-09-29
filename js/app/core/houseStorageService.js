@@ -8,15 +8,18 @@
 
 	function houseStorageService(localStorageService){
 		var service = {
-			getContactData : getContactData,
-			setContactData : setContactData,
-			getGeneralData : getGeneralData,
-			setGeneralData : setGeneralData,
-			setDetailsData : setDetailsData,
-			getDetailsData : getDetailsData,
-			getHouseData : getHouseData,
-			clear : clear,
-			setAllTempData : setAllTempData
+			getContactData: getContactData,
+			setContactData: setContactData,
+			getGeneralData: getGeneralData,
+			setGeneralData: setGeneralData,
+			setDetailsData: setDetailsData,
+			getDetailsData: getDetailsData,
+			getHouseData: getHouseData,
+			clear: clear,
+			setAllTempData: setAllTempData,
+			setHoseFiles: setHoseFiles,
+			getHoseFiles: getHoseFiles,
+			setHoseFilesJSON: setHoseFilesJSON
 		};
 
 		return service;
@@ -114,8 +117,33 @@
 				longitude: json.address.longitude,
 				latitude: json.address.latitude
 			};
-			console.log('detailsData', detailsData);
+
 			setDetailsData(detailsData);
+		}
+
+		/*
+		*Files of house methods
+		*/
+		function setHoseFiles(houseFiles){
+			localStorageService.setJSONItem('house-files', houseFiles);
+		}
+
+		function getHoseFiles(){
+			return localStorageService.getJSONItem('house-files');
+		}
+
+		function setHoseFilesJSON(json){
+			var filesArray = [];
+			angular.forEach(json, function(value, key){
+				if(value.file.length > 0){
+					//Cada item del arreglo de files tiene solo un elemento
+					//Por eso siempre sacamos el file de la posición cero
+					var houseFiles = value.file[0];
+					filesArray.push(houseFiles);
+				}
+			});
+
+			setHoseFiles(filesArray);
 		}
 	}
 })();

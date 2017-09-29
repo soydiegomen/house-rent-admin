@@ -4,11 +4,12 @@
 	
 	angular.module('chaiApp.core').factory('utilityService', utilityService);
 
-	utilityService.$inject = ['$location','$routeParams'];
+	utilityService.$inject = ['$location','$routeParams', 'appConfig'];
 
-	function utilityService($location, $routeParams){
+	function utilityService($location, $routeParams, appConfig){
 		var service = {
-			navigateToNextStep : navigateToNextStep
+			navigateToNextStep: navigateToNextStep,
+			getFilesSite: getFilesSite
 		};
 
 		return service;
@@ -20,6 +21,10 @@
 				nextRoute = nextRoute + houseId;
 			}
 			$location.path( nextRoute );
+		}
+
+		function getFilesSite(){
+			return appConfig.filesSite;
 		}
 	}
 })();

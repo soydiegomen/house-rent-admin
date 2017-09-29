@@ -13,7 +13,8 @@
 			saveHouseFile : saveHouseFile,
 			getHouseByStatus : getHouseByStatus,
 			getHouse : getHouse,
-			updateHouse : updateHouse
+			updateHouse : updateHouse,
+			getHouseFiles : getHouseFiles
 		};
 
 		return service;
@@ -69,6 +70,17 @@
 
 		function getHouse(id){
 			var serviceUrl = appConfig.apiBaseUrl + 'api/house/' + id;
+
+			return $http.get(serviceUrl)
+				.then(function successCallback(response) {
+			    	return response.data;
+			  	}, function errorCallback(response) {
+			    	return response;
+			  	});
+		}
+
+		function getHouseFiles(id){
+			var serviceUrl = appConfig.apiBaseUrl + 'api/files-of-house/' + id;
 
 			return $http.get(serviceUrl)
 				.then(function successCallback(response) {

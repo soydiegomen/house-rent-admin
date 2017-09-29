@@ -32,13 +32,18 @@
 			console.log('Activated ContactFormCtrl');	
 			if($routeParams.id){
 				//Edit mode
-				dataservice.getHouse($routeParams.id).then( function (data) {
+				var houseId = $routeParams.id;
+				dataservice.getHouse(houseId).then( function (data) {
 					houseStorageService.setAllTempData(data);
 
 					var savedContData = houseStorageService.getContactData();
 					if(savedContData){
 						homeCtrl.contactData = savedContData;
 					}
+				});
+
+				dataservice.getHouseFiles(houseId).then( function (data){
+					houseStorageService.setHoseFilesJSON(data);
 				});
 			}else{
 				//Inser mode

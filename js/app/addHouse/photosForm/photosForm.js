@@ -11,6 +11,7 @@
 		appConfig, utilityService){
 		var homeCtrl = this;
 		var uploadedFiles = [];
+		var currentMode = 'insert';
 
 		//Events
 		homeCtrl.clickBack = clickBack;
@@ -30,6 +31,15 @@
 
 		function activate(){
 			console.log('Activated PhotosFormCtrl');	
+
+			//Define current mode
+			var houseData = houseStorageService.getHouseData();
+			currentMode = houseData.general._id ? 'update' : 'insert';
+
+			console.log(currentMode);
+			if(currentMode === 'update'){
+				renderHouseFiles();
+			}
 		}
 
 		//Events
@@ -40,18 +50,31 @@
 		function saveHouse(){
 			var houseData = houseStorageService.getHouseData();
 
-			if(houseData.general._id){
-				//Update mode
-				updateHouse(houseData);
-			}else{
+			if(currentMode === 'insert'){
 				//Insert mode
 				createNewHouse(houseData);
+			}else{
+				//Update mode
+				updateHouse(houseData);
 			}
 		}
 
 		/*
 		*Helpers
 		*/
+
+		function renderHouseFiles(){
+			var filesArray = houseStorageService.getHoseFiles();
+			var fileServiceUrl = utilityService.getFilesSite();
+
+			angular.forEach(filesArray, function(value, key){
+				console.log(value);
+				value.fileUrl = fileServiceUrl + value.fileUrl;
+			});
+
+			console.log('files', filesArray);
+		}
+
 		function createNewHouse(houseData){
 			//Get all the house data saved in the steps of the wizard
 			
