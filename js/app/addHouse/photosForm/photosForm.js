@@ -13,6 +13,9 @@
 		var uploadedFiles = [];
 		var currentMode = 'insert';
 
+		//Properties
+		homeCtrl.files = null;
+
 		//Events
 		homeCtrl.clickBack = clickBack;
 		homeCtrl.saveHouse = saveHouse;
@@ -62,9 +65,8 @@
 		/*
 		*Helpers
 		*/
-
 		function renderHouseFiles(){
-			var filesArray = houseStorageService.getHoseFiles();
+			var filesArray = houseStorageService.getHouseFiles();
 			var fileServiceUrl = utilityService.getFilesSite();
 
 			angular.forEach(filesArray, function(value, key){
@@ -72,7 +74,7 @@
 				value.fileUrl = fileServiceUrl + value.fileUrl;
 			});
 
-			console.log('files', filesArray);
+			homeCtrl.files = filesArray;
 		}
 
 		function createNewHouse(houseData){
@@ -136,6 +138,7 @@
 
 		function saveHouseFiles(houseId, callback){
 			var counter = uploadedFiles.length;
+			console.log('files to save: ' + counter);
 			angular.forEach(uploadedFiles, function(value, key){
 		    	var houseFile = {
 				  houseId: houseId,
@@ -157,6 +160,7 @@
 		// CALLBACKS
         uploader.onCompleteItem = function(fileItem, response, status, headers) {
             var newFile = response._id;
+            console.log('json aferter save fiel', response);
             uploadedFiles.push(newFile);
             //Clear input file, for upload new files
             document.getElementById('userPhoto').value = null;

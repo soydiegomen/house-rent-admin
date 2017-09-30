@@ -17,9 +17,9 @@
 			getHouseData: getHouseData,
 			clear: clear,
 			setAllTempData: setAllTempData,
-			setHoseFiles: setHoseFiles,
-			getHoseFiles: getHoseFiles,
-			setHoseFilesJSON: setHoseFilesJSON
+			setHouseFiles: setHouseFiles,
+			getHouseFiles: getHouseFiles,
+			setHouseFilesJSON: setHouseFilesJSON
 		};
 
 		return service;
@@ -124,15 +124,24 @@
 		/*
 		*Files of house methods
 		*/
-		function setHoseFiles(houseFiles){
+		function setHouseFiles(houseFiles){
 			localStorageService.setJSONItem('house-files', houseFiles);
 		}
 
-		function getHoseFiles(){
+		function getHouseFiles(){
 			return localStorageService.getJSONItem('house-files');
 		}
 
-		function setHoseFilesJSON(json){
+		function pushHouseFiles(newFile){
+			var houseFiles = getHouseFiles();
+			if(!houseFiles){
+				houseFiles = [];
+			}
+
+			houseFiles.push(newFile);
+		}
+
+		function setHouseFilesJSON(json){
 			var filesArray = [];
 			angular.forEach(json, function(value, key){
 				if(value.file.length > 0){
@@ -143,7 +152,7 @@
 				}
 			});
 
-			setHoseFiles(filesArray);
+			setHouseFiles(filesArray);
 		}
 	}
 })();

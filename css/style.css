@@ -227,3 +227,15 @@ a.no-underline:hover{
 .admin-map-container{
 	margin-top: 20px;
 }
+/*photos form*/
+div.photos-saved{
+	display: inline-block;
+}
+.photos-saved img{
+	height: 220px;
+	width: auto;
+	margin-right: 20px;
+}
+.bottons-wrapper{
+	margin-top: 40px;
+}

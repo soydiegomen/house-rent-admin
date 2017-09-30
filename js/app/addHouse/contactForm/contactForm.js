@@ -33,27 +33,15 @@
 			if($routeParams.id){
 				//Edit mode
 				var houseId = $routeParams.id;
-				dataservice.getHouse(houseId).then( function (data) {
-					houseStorageService.setAllTempData(data);
-
-					var savedContData = houseStorageService.getContactData();
-					if(savedContData){
-						homeCtrl.contactData = savedContData;
-					}
-				});
-
-				dataservice.getHouseFiles(houseId).then( function (data){
-					houseStorageService.setHoseFilesJSON(data);
-				});
+				setupSevedData(houseId);
+				
 			}else{
-				//Inser mode
+				//Inser mode when return wizard to the first step
 				var savedContData = houseStorageService.getContactData();
 				if(savedContData){
 					homeCtrl.contactData = savedContData;
 				}	
 			}
-
-			
 		}
 
 		//Events implementation
@@ -72,6 +60,27 @@
 			houseStorageService.clear();
 			//TODO: Redirect to the houses list page
 			$location.path('/list-houses');
+		}
+
+		//Helpers
+
+		function setupSevedData(houseId){
+			dataservice.getHouse(houseId).then( function (data) {
+				//Save data in angular storage
+				houseStorageService.setAllTempData(data);
+
+				var savedContData = houseStorageService.getContactData();
+				//Fill contact form data using storage data
+				if(savedContData){
+					homeCtrl.contactData = savedContData;
+				}
+
+				//Get saved files
+				dataservice.getHouseFiles(houseId).then( function (data){
+					//Save house files in angular storage
+					houseStorageService.setHouseFilesJSON(data);
+				});
+			});
 		}
 	}
 })();
