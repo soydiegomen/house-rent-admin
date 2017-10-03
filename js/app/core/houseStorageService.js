@@ -132,15 +132,6 @@
 			return localStorageService.getJSONItem('house-files');
 		}
 
-		function pushHouseFiles(newFile){
-			var houseFiles = getHouseFiles();
-			if(!houseFiles){
-				houseFiles = [];
-			}
-
-			houseFiles.push(newFile);
-		}
-
 		function setHouseFilesJSON(json){
 			var filesArray = [];
 			angular.forEach(json, function(value, key){

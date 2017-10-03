@@ -10,11 +10,10 @@
 	function PhotosFormCtrl($location, dataservice, houseStorageService, $scope, FileUploader, 
 		appConfig, utilityService){
 		var homeCtrl = this;
-		var uploadedFiles = [];
 		var currentMode = 'insert';
 
 		//Properties
-		homeCtrl.files = null;
+		homeCtrl.files = [];
 
 		//Events
 		homeCtrl.clickBack = clickBack;
@@ -39,7 +38,6 @@
 			var houseData = houseStorageService.getHouseData();
 			currentMode = houseData.general._id ? 'update' : 'insert';
 
-			console.log(currentMode);
 			if(currentMode === 'update'){
 				renderHouseFiles();
 			}
@@ -70,7 +68,6 @@
 			var fileServiceUrl = utilityService.getFilesSite();
 
 			angular.forEach(filesArray, function(value, key){
-				console.log(value);
 				value.fileUrl = fileServiceUrl + value.fileUrl;
 			});
 
@@ -93,9 +90,10 @@
 
 				var houseId = data._id;
 
+				var houseFiles = homeCtrl.files;
 				//If there are files must save it
-				if(uploadedFiles.length > 0){
-					saveHouseFiles(houseId, doAfterSave);
+				if(houseFiles.length > 0){
+					saveHouseFiles(houseId, doAfterSave, houseFiles);
 				}else{
 					doAfterSave();
 				}
@@ -117,9 +115,10 @@
 
 				var houseId = data._id;
 
+				var houseFiles = homeCtrl.files;
 				//If there are files must save it
-				if(uploadedFiles.length > 0){
-					saveHouseFiles(houseId, doAfterSave);
+				if(houseFiles.length > 0){
+					saveHouseFiles(houseId, doAfterSave, houseFiles);
 				}else{
 					doAfterSave();
 				}
@@ -136,13 +135,12 @@
 			$location.path('/');
 		}
 
-		function saveHouseFiles(houseId, callback){
-			var counter = uploadedFiles.length;
-			console.log('files to save: ' + counter);
-			angular.forEach(uploadedFiles, function(value, key){
+		function saveHouseFiles(houseId, callback, houseFiles){
+			var counter = houseFiles.length;
+			angular.forEach(houseFiles, function(value, key){
 		    	var houseFile = {
 				  houseId: houseId,
-				  fileId: value,
+				  fileId: value._id,
 				  isActive: true
 				};
 
@@ -159,12 +157,15 @@
 
 		// CALLBACKS
         uploader.onCompleteItem = function(fileItem, response, status, headers) {
-            var newFile = response._id;
-            console.log('json aferter save fiel', response);
-            uploadedFiles.push(newFile);
+            var fileServiceUrl = utilityService.getFilesSite();
+            //Build url of image using the cdn path plus image relative path
+            response.fileUrl = fileServiceUrl + response.fileUrl;
+
+            homeCtrl.files.push(response);
+            //Actualizar el arreglo de archivos en el local storage
+            houseStorageService.setHouseFiles(homeCtrl.files);
             //Clear input file, for upload new files
             document.getElementById('userPhoto').value = null;
-            alert('La foto se ha guardado en el servidor');
         };
 
 	}
