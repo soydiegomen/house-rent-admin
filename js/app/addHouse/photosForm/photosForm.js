@@ -118,7 +118,7 @@
 				var houseFiles = homeCtrl.files;
 				//If there are files must save it
 				if(houseFiles.length > 0){
-					saveHouseFiles(houseId, doAfterSave, houseFiles);
+					updateHouseFiles(houseId, doAfterSave, houseFiles);
 				}else{
 					doAfterSave();
 				}
@@ -153,6 +153,21 @@
 					}
 				});
 			});
+		}
+
+		function updateHouseFiles(houseId, callback, houseFiles){
+			var filesArray = [];
+			angular.forEach(houseFiles, function(value, key){
+				filesArray.push(value._id);
+		    });
+
+		    var jsonFiles = {
+		    	files: filesArray
+		    };
+
+			dataservice.updateFilesOfHouse(houseId, jsonFiles)
+			.then(callback);
+			
 		}
 
 		// CALLBACKS
