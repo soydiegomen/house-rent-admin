@@ -89,7 +89,6 @@
 				}
 
 				var houseId = data._id;
-
 				var houseFiles = homeCtrl.files;
 				//If there are files must save it
 				if(houseFiles.length > 0){
@@ -114,7 +113,6 @@
 				}
 
 				var houseId = data._id;
-
 				var houseFiles = homeCtrl.files;
 				//If there are files must save it
 				if(houseFiles.length > 0){
@@ -134,7 +132,7 @@
 			alert('La casa fue guardada exitosamente!!');
 			$location.path('/');
 		}
-
+/*
 		function saveHouseFiles(houseId, callback, houseFiles){
 			var counter = houseFiles.length;
 			angular.forEach(houseFiles, function(value, key){
@@ -153,8 +151,29 @@
 					}
 				});
 			});
+		}*/
+
+		/*
+		*Save files of house
+		*/
+		function saveHouseFiles(houseId, callback, houseFiles){
+			var filesArray = [];
+			angular.forEach(houseFiles, function(value, key){
+				filesArray.push(value._id);
+		    });
+
+		    var jsonFiles = {
+		    	houseId: houseId,
+		    	files: filesArray
+		    };
+
+			dataservice.saveHouseFile(jsonFiles)
+			.then(callback);
 		}
 
+		/*
+		*Update files of house
+		*/
 		function updateHouseFiles(houseId, callback, houseFiles){
 			var filesArray = [];
 			angular.forEach(houseFiles, function(value, key){
@@ -167,7 +186,6 @@
 
 			dataservice.updateFilesOfHouse(houseId, jsonFiles)
 			.then(callback);
-			
 		}
 
 		// CALLBACKS
