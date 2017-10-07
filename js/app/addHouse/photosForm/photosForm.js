@@ -38,9 +38,8 @@
 			var houseData = houseStorageService.getHouseData();
 			currentMode = houseData.general._id ? 'update' : 'insert';
 
-			if(currentMode === 'update'){
-				renderHouseFiles();
-			}
+			//Show images saved in local storage
+			showLocalStorageImages();
 		}
 
 		//Events
@@ -63,15 +62,19 @@
 		/*
 		*Helpers
 		*/
-		function renderHouseFiles(){
+		function showLocalStorageImages(){
 			var filesArray = houseStorageService.getHouseFiles();
-			var fileServiceUrl = utilityService.getFilesSite();
+			
+			if(filesArray && filesArray.length > 0){
 
-			angular.forEach(filesArray, function(value, key){
-				value.fileUrl = fileServiceUrl + value.fileUrl;
-			});
+				var fileServiceUrl = utilityService.getFilesSite();
 
-			homeCtrl.files = filesArray;
+				angular.forEach(filesArray, function(value, key){
+					value.finalUrl = fileServiceUrl + value.fileUrl;
+				});
+
+				homeCtrl.files = filesArray;
+			}
 		}
 
 		function createNewHouse(houseData){
@@ -132,26 +135,6 @@
 			alert('La casa fue guardada exitosamente!!');
 			$location.path('/');
 		}
-/*
-		function saveHouseFiles(houseId, callback, houseFiles){
-			var counter = houseFiles.length;
-			angular.forEach(houseFiles, function(value, key){
-		    	var houseFile = {
-				  houseId: houseId,
-				  fileId: value._id,
-				  isActive: true
-				};
-
-				dataservice.saveHouseFile(houseFile).then(function(){
-					counter--;
-
-					//Execute callback after save all files
-					if(counter === 0){
-						callback();
-					}
-				});
-			});
-		}*/
 
 		/*
 		*Save files of house
@@ -192,7 +175,7 @@
         uploader.onCompleteItem = function(fileItem, response, status, headers) {
             var fileServiceUrl = utilityService.getFilesSite();
             //Build url of image using the cdn path plus image relative path
-            response.fileUrl = fileServiceUrl + response.fileUrl;
+            response.finalUrl = fileServiceUrl + response.fileUrl;
 
             homeCtrl.files.push(response);
             //Actualizar el arreglo de archivos en el local storage
