@@ -14,13 +14,14 @@
 
 		//Properties
 		homeCtrl.files = [];
+		homeCtrl.myFile = null;
+		homeCtrl.errorMessage = '';
 
 		//Events
 		homeCtrl.clickBack = clickBack;
 		homeCtrl.saveHouse = saveHouse;
-		homeCtrl.myFile = null;
-		homeCtrl.errorMessage = '';
-
+		homeCtrl.deleteFile = deleteFile;
+		
 		//Setup FileUploader
 		var serviceUrl = appConfig.apiBaseUrl + 'api/upload-files';
 		var uploader = $scope.uploader = new FileUploader({
@@ -56,6 +57,12 @@
 			}else{
 				//Update mode
 				updateHouse(houseData);
+			}
+		}
+
+		function deleteFile(itemToRemove){
+			if(homeCtrl.files.length > itemToRemove){
+				homeCtrl.files.splice(itemToRemove, 1);
 			}
 		}
 

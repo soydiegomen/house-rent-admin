@@ -234,6 +234,17 @@ div.photos-saved{
 .photos-saved img{
 	height: 220px;
 	width: auto;
+}
+a.delete-image{
+	position: relative;
+    top: 27px;
+    right: 12px;
+    color: #fff;
+}
+a.delete-image:hover{
+	color: #d9534f;
+}
+.image-wrapper{
 	margin-right: 20px;
 }
 .bottons-wrapper{

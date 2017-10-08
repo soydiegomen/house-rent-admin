@@ -28,9 +28,14 @@
 	<div class="row">
 	  <div class="col-md-12">
 		<h3>Fotos de la casa</h3>
-		<div class="photos-saved" ng-repeat="file in photosFormCtrl.files">
-		<img ng-src="{{file.finalUrl}}" alt="Description" class="img-responsive" />
-	  </div>
+		<div class="photos-saved text-right" ng-repeat="file in photosFormCtrl.files">
+			<div class="image-wrapper">
+				<a href class="delete-image" ng-click="photosFormCtrl.deleteFile($index)">
+					<i class="fa fa-trash fa-lg" aria-hidden="true"></i>
+				</a>
+				<img ng-src="{{file.finalUrl}}" alt="Foto" class="img-responsive" />
+			</div>
+		</div>
 	</div>
 	<!-- end row -->
 	<div class="row">
