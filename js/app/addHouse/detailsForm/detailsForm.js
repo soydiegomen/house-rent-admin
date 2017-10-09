@@ -20,6 +20,7 @@
 		detailsCtrl.detailsData = { 
 			title: '', 
 			summary: '', 
+			status: 'Publicado',//Default status 
 			price: '', 
 			priceType: '', 
 			address: '',

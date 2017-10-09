@@ -110,6 +110,7 @@
 				title: json.title, 
 				summary: json.summary, 
 				price: json.price, 
+				status: json.status,
 				priceType: json.priceType, 
 				address: json.address.address,
 				state: json.address.state,

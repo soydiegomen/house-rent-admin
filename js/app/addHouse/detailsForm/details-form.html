@@ -13,6 +13,15 @@
 	        <textarea class="form-control" rows="3" placeholder="Describe tu alojamiento a grandes rasgos" ng-model="detailsFormCtrl.detailsData.summary"></textarea>
 	      </div>
 	      <!-- end resumen -->
+	      <div class="form-group">
+	        <label for="exampleInputEmail1">Estatus</label>
+	        <select class="form-control" ng-model="detailsFormCtrl.detailsData.status">
+	          <option value="Publicado">Publicado</option>
+	          <option value="Borrador">Borrador</option>
+	          <option value="Inactivo">Inactivo</option>
+	        </select>
+	      </div>
+	      <!-- end tipo de operación -->
 	      <div class="admin-subsection">
 	        <h3>Precio</h3>
 	      </div>

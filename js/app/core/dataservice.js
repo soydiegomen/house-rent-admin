@@ -158,7 +158,7 @@
 				propertyType: general.propertyType,
 				operationType: general.operationType,
 				services: servArray,
-				status: appConfig.defaultHouseStatus,
+				status: details.status,
 				noBedrooms: general.noBedrooms,
 				noBathrooms: general.noBathrooms,
 				noParking: general.noParking,
