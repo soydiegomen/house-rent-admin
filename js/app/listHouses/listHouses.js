@@ -11,6 +11,8 @@
 
 		//Properties
 		listCtrl.houses = null;
+		listCtrl.currentStatus = null;
+		listCtrl.getListByStatus = getListByStatus;
 
 		//Initialize controller
 		activate();
@@ -23,7 +25,14 @@
 		}
 
 		function fillHouseList(){
-			dataservice.getHouseByStatus('Publicado')
+			//Publicado is the default status
+			getListByStatus('Publicado');
+		}
+
+		//Events
+		function getListByStatus(status){
+			listCtrl.currentStatus = status;
+			dataservice.getHouseByStatus(status)
 			.then(function(data){
 				listCtrl.houses = data;
 			});

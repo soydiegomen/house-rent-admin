@@ -8,6 +8,28 @@
 					<a href="#/contact-form/" class="btn btn-primary coco-color">Agregar una casa</a>
 				</div>
 			</div>
+			<div>
+				<ul class="list-inline">
+				  <li>
+				  	<a href ng-class="(listHousesCtrl.currentStatus === 'Publicado') ? 'house-link' : ''" 
+				  	ng-click="listHousesCtrl.getListByStatus('Publicado')">	
+				  		Publicadas
+				  	</a>
+				  </li>
+				  <li>
+				  	<a href ng-class="(listHousesCtrl.currentStatus === 'Borrador') ? 'house-link' : ''" 
+				  	ng-click="listHousesCtrl.getListByStatus('Borrador')">	
+				  		Borrador
+				  	</a>
+				  </li>
+				  <li>
+				  	<a href ng-class="(listHousesCtrl.currentStatus === 'Inactivo') ? 'house-link' : ''"
+				  	ng-click="listHousesCtrl.getListByStatus('Inactivo')">	
+				  		Inactivas
+				  	</a>
+				  </li>
+				</ul>
+			</div>
 			<table class="table table-bordered">
 				<thead>
 					<tr>
