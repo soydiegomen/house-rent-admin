@@ -46,8 +46,12 @@
 							</a>
 						</td>
 						<td ng-bind="house.title"></td>
-						<td ng-bind="house.creationDate"></td>
-						<td ng-bind="house.lastModification"></td>
+						<td>
+							{{ house.creationDate | date :  "dd/MM/yyyy" }}
+						</td>
+						<td>
+							{{ house.lastModification | date :  "dd/MM/yyyy" }}
+						</td>
 					</tr>
 				</tbody>
 			<div >
