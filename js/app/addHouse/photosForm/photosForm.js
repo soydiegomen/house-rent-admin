@@ -110,7 +110,10 @@
 		}
 
 		function updateHouse(houseData){
-			
+			var houseFiles = homeCtrl.files;
+			var arrayFiles = getFilesForSave(houseFiles);
+			houseData.files = arrayFiles;
+			console.log('house model', houseData);
 			dataservice.updateHouse(houseData).then(function(data){
 
 				//If some error happend show the error and cancel the process 
@@ -120,16 +123,19 @@
 				}else if(homeCtrl.errorMessage.length > 0){
 					//Clear error message
 					homeCtrl.errorMessage = '';
+					return;
 				}
 
+				doAfterSave();
+				/*
 				var houseId = data._id;
-				var houseFiles = homeCtrl.files;
+				
 				//If there are files must save it
 				if(houseFiles.length > 0){
 					updateHouseFiles(houseId, doAfterSave, houseFiles);
 				}else{
 					doAfterSave();
-				}
+				}*/
 			});
 		}
 
@@ -176,6 +182,15 @@
 
 			dataservice.updateFilesOfHouse(houseId, jsonFiles)
 			.then(callback);
+		}
+
+		function getFilesForSave(houseFiles){
+			var filesArray = [];
+			angular.forEach(houseFiles, function(value, key){
+				filesArray.push(value._id);
+		    });
+
+		    return filesArray;
 		}
 
 		// CALLBACKS

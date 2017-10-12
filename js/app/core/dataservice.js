@@ -146,6 +146,7 @@
 			var contact = houseData.contact;
 			var general = houseData.general;
 			var details = houseData.details;
+			var arrayFiles = houseData.files ? houseData.files : [];
 
 			var servArray = getServicesArray(general.services);
 
@@ -175,7 +176,8 @@
 					mail: contact.email,
 					facebook: contact.facebook,
 					website: contact.website
-				}
+				},
+				files: arrayFiles
 			};
 
 			console.log('house', house);
