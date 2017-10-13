@@ -12,11 +12,7 @@
 			uploadFile : uploadFile,
 			getHouseByStatus : getHouseByStatus,
 			getHouse : getHouse,
-			updateHouse : updateHouse,
-			/*House files functions*/
-			getHouseFiles : getHouseFiles,
-			updateFilesOfHouse: updateFilesOfHouse,
-			saveHouseFile : saveHouseFile,
+			updateHouse : updateHouse
 		};
 
 		return service;
