@@ -18,8 +18,7 @@
 			clear: clear,
 			setAllTempData: setAllTempData,
 			setHouseFiles: setHouseFiles,
-			getHouseFiles: getHouseFiles,
-			setHouseFilesJSON: setHouseFilesJSON
+			getHouseFiles: getHouseFiles
 		};
 
 		return service;
@@ -66,10 +65,10 @@
 			localStorageService.clear();
 		}
 
-		function setAllTempData(json){
-			setContactUsingJson(json);
-			setGeneralUsingJson(json);
-			setDetailsUsingJson(json);
+		function setAllTempData(houseData){
+			setContactUsingJson(houseData);
+			setGeneralUsingJson(houseData);
+			setDetailsUsingJson(houseData);	
 		}
 
 		/*Helpers*/
@@ -131,20 +130,6 @@
 
 		function getHouseFiles(){
 			return localStorageService.getJSONItem('house-files');
-		}
-
-		function setHouseFilesJSON(json){
-			var filesArray = [];
-			angular.forEach(json, function(value, key){
-				if(value.file.length > 0){
-					//Cada item del arreglo de files tiene solo un elemento
-					//Por eso siempre sacamos el file de la posición cero
-					var houseFiles = value.file[0];
-					filesArray.push(houseFiles);
-				}
-			});
-
-			setHouseFiles(filesArray);
 		}
 	}
 })();

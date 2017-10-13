@@ -85,8 +85,9 @@
 		}
 
 		function createNewHouse(houseData){
-			//Get all the house data saved in the steps of the wizard
-			
+			var arrayFiles = getFilesForSave(homeCtrl.files);
+			houseData.files = arrayFiles;
+
 			dataservice.saveHouse(houseData).then(function(data){
 
 				//If some error happend show the error and cancel the process 
@@ -98,22 +99,16 @@
 					homeCtrl.errorMessage = '';
 				}
 
-				var houseId = data._id;
-				var houseFiles = homeCtrl.files;
-				//If there are files must save it
-				if(houseFiles.length > 0){
-					saveHouseFiles(houseId, doAfterSave, houseFiles);
-				}else{
-					doAfterSave();
-				}
+				//Navigate to list of houses
+				doAfterSave();
 			});
 		}
 
 		function updateHouse(houseData){
-			var houseFiles = homeCtrl.files;
-			var arrayFiles = getFilesForSave(houseFiles);
+			var arrayFiles = getFilesForSave(homeCtrl.files);
 			houseData.files = arrayFiles;
-			console.log('house model', houseData);
+
+			//Update house data including files
 			dataservice.updateHouse(houseData).then(function(data){
 
 				//If some error happend show the error and cancel the process 
@@ -123,19 +118,10 @@
 				}else if(homeCtrl.errorMessage.length > 0){
 					//Clear error message
 					homeCtrl.errorMessage = '';
-					return;
 				}
 
+				//Navigate to list of houses
 				doAfterSave();
-				/*
-				var houseId = data._id;
-				
-				//If there are files must save it
-				if(houseFiles.length > 0){
-					updateHouseFiles(houseId, doAfterSave, houseFiles);
-				}else{
-					doAfterSave();
-				}*/
 			});
 		}
 
@@ -150,45 +136,16 @@
 		}
 
 		/*
-		*Save files of house
+		Build JSON array used for save files in house model
 		*/
-		function saveHouseFiles(houseId, callback, houseFiles){
-			var filesArray = [];
-			angular.forEach(houseFiles, function(value, key){
-				filesArray.push(value._id);
-		    });
-
-		    var jsonFiles = {
-		    	houseId: houseId,
-		    	files: filesArray
-		    };
-
-			dataservice.saveHouseFile(jsonFiles)
-			.then(callback);
-		}
-
-		/*
-		*Update files of house
-		*/
-		function updateHouseFiles(houseId, callback, houseFiles){
-			var filesArray = [];
-			angular.forEach(houseFiles, function(value, key){
-				filesArray.push(value._id);
-		    });
-
-		    var jsonFiles = {
-		    	files: filesArray
-		    };
-
-			dataservice.updateFilesOfHouse(houseId, jsonFiles)
-			.then(callback);
-		}
-
 		function getFilesForSave(houseFiles){
 			var filesArray = [];
-			angular.forEach(houseFiles, function(value, key){
-				filesArray.push(value._id);
-		    });
+			
+			if(houseFiles && houseFiles.length > 0){
+				angular.forEach(houseFiles, function(value, key){
+					filesArray.push(value._id);
+			    });
+			}
 
 		    return filesArray;
 		}

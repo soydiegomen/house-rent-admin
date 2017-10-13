@@ -60,7 +60,7 @@
 		}
 
 		function getHouse(id){
-			var serviceUrl = appConfig.apiBaseUrl + 'api/house/' + id;
+			var serviceUrl = appConfig.apiBaseUrl + 'api/house-with-files/' + id;
 
 			return $http.get(serviceUrl)
 				.then(function successCallback(response) {
@@ -71,7 +71,6 @@
 		}		
 
 		function uploadFile($scope){
-			console.log($scope.file);
 
 			var formData = new FormData();
 			formData.append('userPhoto', $scope.file);
@@ -88,45 +87,8 @@
 	            transformRequest: angular.identity
 	        }).
 	        then(function(result) {
-	            console.log(result);
 	            return result.data;
 	        });
-		}
-
-		/*House files services*/
-
-		function getHouseFiles(houseId){
-			var serviceUrl = appConfig.apiBaseUrl + 'api/files-of-house/' + houseId;
-
-			return $http.get(serviceUrl)
-				.then(function successCallback(response) {
-			    	return response.data;
-			  	}, function errorCallback(response) {
-			    	return response;
-			  	});
-		}
-
-		function saveHouseFile(houseFile){
-			var serviceUrl = appConfig.apiBaseUrl + 'api/house-files';
-
-			return $http.post(serviceUrl, houseFile)
-				.then(function successCallback(response) {
-			    	return response.data;
-			  	}, function errorCallback(response) {
-			    	return response;
-			  	});
-		}
-
-		function updateFilesOfHouse(houseId, houseFiles){
-			var serviceUrl = appConfig.apiBaseUrl + 'api/files-of-house/' + houseId;
-			console.log('serviceUrl', serviceUrl);
-			console.log('json', houseFiles);
-			return $http.put(serviceUrl, houseFiles)
-				.then(function successCallback(response) {
-			    	return response.data;
-			  	}, function errorCallback(response) {
-			    	return response;
-			  	});
 		}
 
 		/*Helpers*/
@@ -179,8 +141,6 @@
 				},
 				files: arrayFiles
 			};
-
-			console.log('house', house);
 
 			return house;
 		}

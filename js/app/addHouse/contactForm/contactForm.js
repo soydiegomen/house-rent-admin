@@ -65,21 +65,21 @@
 		//Helpers
 
 		function setupSevedData(houseId){
-			dataservice.getHouse(houseId).then( function (data) {
-				//Save data in angular storage
-				houseStorageService.setAllTempData(data);
+			dataservice.getHouse(houseId).then( function (json) {
 
-				var savedContData = houseStorageService.getContactData();
-				//Fill contact form data using storage data
-				if(savedContData){
-					homeCtrl.contactData = savedContData;
-				}
-
-				//Get saved files
-				dataservice.getHouseFiles(houseId).then( function (data){
+				if(json && json.length > 0){
+					var houseData = json[0];
+					//Save data in angular storage
+					houseStorageService.setAllTempData(houseData);
 					//Save house files in angular storage
-					houseStorageService.setHouseFilesJSON(data);
-				});
+					houseStorageService.setHouseFiles(houseData.filesData);
+
+					var savedContData = houseStorageService.getContactData();
+					//Fill contact form data using storage data
+					if(savedContData){
+						homeCtrl.contactData = savedContData;
+					}
+				}
 			});
 		}
 	}
